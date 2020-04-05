@@ -1,15 +1,11 @@
 const router = require("express").Router();
 // import controllers
-const controller = require("../../controllers/boilerController");
+const controller = require("../../controllers/ticketController");
 
 // uses /api
 
-// @route GET api/boiler
-// @desc Get All Items
-// @access Public
-
-router.get("/items", controller.findAll);
-router.post("/items", controller.save);
-router.delete("/items/:id", controller.delete);
+router.get("/tickets", controller.findAll);
+router.post("/tickets", controller.save);
+router.delete("/ticket/:id", controller.delete);
 
 module.exports = router;

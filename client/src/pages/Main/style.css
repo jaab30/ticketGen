@@ -1,0 +1,33 @@
+body {
+    background-image: url("./images/gplaypattern.png");
+}
+
+Form.logForm{
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgb(141, 137, 137, .5);
+}
+.textLogin {
+    color: gray;
+    margin-top: 15px;
+}
+
+p.loginHeadText{
+    font-size: 2.3em;
+    font-weight: 400;
+}
+
+.linkSpan {
+    color: lightskyblue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.linkSpan:hover{
+    color:gray;
+}
+
+.jumbotron {
+    margin: 0;
+}
+
+

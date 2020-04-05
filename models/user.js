@@ -24,6 +24,10 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    address2: {
+        type: String,
+        required: true
+    },
     state: {
         type: String,
         required: true
@@ -32,14 +36,24 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    phone: {
+    phoneNumber: {
         type: Number,
         required: true
+    },
+    role: {
+        type: String,
+        require: true
     },
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    tickets: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "userticket"
+        }
+    ]
 
 });
 
