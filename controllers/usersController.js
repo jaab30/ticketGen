@@ -13,10 +13,16 @@ module.exports = {
         if (!firstName || !lastName || !email || !password || !address || !state || !zip || !phoneNumber) {
             return res.status(400).json({ msg: "Please enter all fields" })
         }
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (reg.test(email) == false) {
+            return res.status(400).json({ msg: "Invalid Email Format" })
+        }
+
 
         User.findOne({ email })
             .then(user => {
-                if (user) return res.status(400).json({ msg:"User already registered" });
+                if (user) return res.status(400).json({ msg: "User already registered" });
                 // Create New User
                 const newUser = new User({
                     firstName,
@@ -36,8 +42,7 @@ module.exports = {
                         // console.log("1.",newUser);
 
                         newUser.password = hash;
-                        console.log("2.",newUser);
-
+                        console.log("2.", newUser);
 
                         // Save the new user to the DB
                         newUser.save()
@@ -73,7 +78,7 @@ module.exports = {
 
     auth: function (req, res) {
         console.log(req.body);
-        
+
         const { email, password, role } = req.body;
 
         if (!email || !password || !role) {
@@ -92,8 +97,9 @@ module.exports = {
                             { id: user.id }, config.get("jwtSecret"), { expiresIn: 3600 }, (err, token) => {
                                 if (err) throw err
                                 const { firstName, lastName, email, address, state, zip, phone } = user;
-                                res.json({ token, user: {
-                                        id: user.id,
+                                res.json({
+                                    token, user: {
+                                        _id: user.id,
                                         firstName,
                                         lastName,
                                         email,
@@ -112,9 +118,11 @@ module.exports = {
     },
 
     getUser: function (req, res) {
+        console.log("back end user");
+
         User.findById(req.user.id)
-        .select("-password")
-        .populate("tickets")
+            .select("-password")
+            .populate("tickets")
             .then(user => res.json(user))
             .catch(err => console.log(res.status(404).json({ success: false })));
     }

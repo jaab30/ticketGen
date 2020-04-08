@@ -18,15 +18,14 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-    required: true
+        required: true
     },
     address: {
         type: String,
         required: true
     },
     address2: {
-        type: String,
-        required: true
+        type: String
     },
     state: {
         type: String,
@@ -50,8 +49,8 @@ const UserSchema = new Schema({
     },
     tickets: [
         {
-          type: Schema.Types.ObjectId,
-          ref: "userticket"
+            type: Schema.Types.ObjectId,
+            ref: "userticket"
         }
     ]
 

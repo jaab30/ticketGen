@@ -1,62 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
     Container,
     Row,
     Col,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    NavbarText,
-    Collapse,
     Button
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { P } from "../../components/Text";
-import API from "../../utils/API";
+import MainNav from "../../components/MainNav";
+import { useSelector, useDispatch } from "react-redux";
+import { loadUserTickets } from "../../actions/ticketAction";
+
+
 
 
 function UserDashboard() {
 
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
 
-    // useEffect(() => {
-    //     API.getUser()
-    //         .then(data => console.log(data))
-    //         .catch(err => console.log(err));
-    // })
+    const user = useSelector(state => state.authReducer)
+    const tickets = useSelector(state => state.ticketReducer.userTickets)
+    const dispatch = useDispatch()
+    const { firstName } = user.user
+
+    useEffect(() => {
+        dispatch(loadUserTickets());
+    }, [])
+
 
     return (
-
-
         <React.Fragment>
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">Ticket Generator</NavbarBrand>
-                <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            <NavLink href="/usertix">Submit Ticket</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#">Ticket Status</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#">Contact</NavLink>
-                        </NavItem>
-                    </Nav>
-                    <NavbarText className="mr-3">Logout</NavbarText>
-                    <NavbarText>User Dashboard</NavbarText>
-                </Collapse>
-            </Navbar>
-
+            <MainNav />
             <Container>
                 <Row>
-                    <Col md={12}>
-                        <h1 className="display-3 text-center text-dark">Hello !</h1>
+                    <Col md={6}>
+                        <h1 className="display-3 text-center text-dark">Hello {firstName}!</h1>
                         <P>email: </P>
                         <P>First Name: </P>
                         <P>Last Name: </P>
@@ -66,23 +43,26 @@ function UserDashboard() {
                         <P>State: </P>
                         <P>Zip: </P>
                         <P>Phone Number: </P>
-                        <Button color="dark" size="lg" block>Update Profile Info</Button>
-                        <Link to="/usertix"><Button className="mt-2 mb-2" color="success" size="lg" block>Submit a Ticket</Button></Link>
-                        <Button color="warning" size="lg" block>Ticket Status</Button>
-                        <Button color="secondary" size="lg" block>Contact</Button>
                     </Col>
-                    {/* <Col md={6}>
-                        <Row className="">
-                            <Col md={12}><Button color="success" size="lg" block>Submit a Ticket</Button></Col>
-                        </Row>
-                        <Row>
-                            <Col md={12}><Button color="warning" size="lg" block>Ticket Status</Button></Col>
-                        </Row>
-                        <Row>
-                            <Col md={12}><Button color="secondary" size="lg" block>Contact</Button></Col>
-                        </Row>
-                    </Col> */}
+                    <Col md={6}>
+                        {tickets.map((ticket, i) => (
+                            <Row key={i}>
+                                <Col md={12}>{i} | {ticket.subject} | {ticket.date} </Col>
+                            </Row>
+                        ))}
+                    </Col>
                 </Row>
+
+                <Row>
+                    <Col md={3}><Button color="success" size="lg" block>Submit a Ticket</Button></Col>
+
+                    <Col md={3}><Link to="/ticketrequest"><Button color="success" size="lg" block>Submit a Ticket</Button></Link></Col>
+
+                    <Col md={3}><Button color="warning" size="lg" block>Ticket Status</Button></Col>
+
+                    <Col md={3}><Button color="secondary" size="lg" block>Contact</Button></Col>
+                </Row>
+
             </Container>
         </React.Fragment>
 

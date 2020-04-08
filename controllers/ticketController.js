@@ -12,19 +12,19 @@ module.exports = {
     save: function (req, res) {
 
         const { tixId, date, subject, description, userId } = req.body;
-        console.log(userId);
+        console.log("reqBody", req.body);
 
         const newTicket = new UserTicket({
             tixId,
             date,
             subject,
-            description        
+            description
         });
         console.log(newTicket);
         newTicket.save()
-        .then(({ _id }) => User.findByIdAndUpdate({ _id: userId }, { $push: { tickets: _id } }, { new: true }))
-        .then( data => res.json(data))
-        .catch(err => console.log(err));
+            .then(({ _id }) => User.findByIdAndUpdate({ _id: userId }, { $push: { tickets: _id } }, { new: true }))
+            .then(data => res.json(data))
+            .catch(err => console.log(err));
     },
     delete: function (req, res) {
         UserTicket.findByIdAndDelete(req.params.id)

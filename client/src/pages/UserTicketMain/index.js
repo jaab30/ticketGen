@@ -3,14 +3,6 @@ import {
     Container,
     Row,
     Col,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    NavbarText,
-    Collapse,
     Button,
     Form,
     FormGroup,
@@ -19,14 +11,17 @@ import {
 } from "reactstrap";
 import { P } from "../../components/Text";
 import API from "../../utils/API";
+import MainNav from "../../components/MainNav";
+import Moment from "react-moment";
+import { useSelector } from "react-redux";
 
 
 
 function TicketMain() {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
 
-    const [date, setDate] = useState("04052020");
+    const user = useSelector(state => state.authReducer.user);
+
+    const [date] = useState(Date.now());
     const [tixId, setTixId] = useState("0001-JA-0420");
     const [subject, setSubject] = useState("");
     const [description, setDescription] = useState("");
@@ -35,49 +30,30 @@ function TicketMain() {
         e.preventDefault();
 
         const dataObj = {
-            userId: "5e896a49229be085c8f0b62e",
+            userId: user._id,
             date,
             tixId,
             subject,
             description
-        } 
+        }
 
         API.addTicket(dataObj)
-        .then( data => {
-            console.log(data);
-            
-        })
-        .catch( err => console.log(err));
+            .then(data => {
+                console.log(data);
+
+            })
+            .catch(err => console.log(err));
     }
 
-
+    const dateToFormat = date;
     return (
         <React.Fragment>
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">Ticket Generator</NavbarBrand>
-                <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            <NavLink href="#">Submit Ticket</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#">Ticket Status</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#">Contact</NavLink>
-                        </NavItem>
-                    </Nav>
-                    <NavbarText className="mr-3">Logout</NavbarText>
-                    <NavbarText>User Dashboard</NavbarText>
-                </Collapse>
-            </Navbar>
-
+            <MainNav />
             <Container>
-                <Form className="logForm bg-light mt-4 p-4 text-dark">
+                <Form className="logForm bg-white mt-4 p-4 text-dark">
                     <h2 className="display-4 text-dark text-center">Request Service Ticket</h2>
                     <Row form>
-                        <Col md={6}><P className="mt-4">Date: 04/05/2020</P></Col>
+                        <Col md={6}><P className="mt-4"><Moment format="MMMM Do YYYY">{dateToFormat}</Moment></P></Col>
                         <Col md={6}><P className="mt-4 text-right">Ticket ID: 0001-JA-0420</P></Col>
                         <Col md={12}>
                             <FormGroup>
@@ -99,7 +75,7 @@ function TicketMain() {
                                     name="description"
                                     id="ticketDescription"
                                     placeholder="Please, describe in detail the issue."
-                                    onChange={(e)=>{setDescription(e.target.value)}}
+                                    onChange={(e) => { setDescription(e.target.value) }}
                                 />
                             </FormGroup>
                         </Col>

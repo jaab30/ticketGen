@@ -1,6 +1,9 @@
 body {
-    background-image: url("./images/gplaypattern.png");
+    background-color: black;
 }
+/* body {
+    background-image: url("./images/gplaypattern.png");
+} */
 
 Form.logForm{
     border-radius: 5px;

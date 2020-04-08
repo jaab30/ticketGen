@@ -1,10 +1,14 @@
 import userReducer from "./user";
-import ticketsReducer from "./tickets";
+import ticketReducer from "./ticketReducer";
+import authReducer from "./authReducer";
+import errorReducer from "./errorReducer";
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
     userReducer,
-    ticketsReducer
+    ticketReducer,
+    authReducer,
+    errorReducer
 });
 
 export default allReducers;
