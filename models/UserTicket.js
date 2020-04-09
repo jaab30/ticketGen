@@ -15,6 +15,12 @@ const UserTicketSchema = new Schema({
         type: String,
         required: true
     },
+    comments: {
+        type: Array
+    },
+    images: {
+        type: Array
+    },
     date: {
         type: Date,
         default: Date.now

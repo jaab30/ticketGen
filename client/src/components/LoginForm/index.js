@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert } fro
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login, clearErrors } from "../../actions/authAction";
-import { P } from "../Text";
+import { P } from "../Tags";
 
 
 function Login() {

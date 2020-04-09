@@ -6,6 +6,7 @@ import store from "./store";
 import Main from "./pages/Main";
 import UserDashboard from "./pages/UserDashboard";
 import UserTicketMain from "./pages/UserTicketMain";
+import UserTicketList from "./pages/UserTicketList";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { loadUser } from "./actions/authAction";
@@ -24,8 +25,10 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
+          {/* <Route exact path="/dashboard" component={UserDashboard} /> */}
           <PrivateRoute exact path="/dashboard" component={UserDashboard} />
           <PrivateRoute exact path="/ticketrequest" component={UserTicketMain} />
+          <PrivateRoute exact path="/ticketlist" component={UserTicketList} />
         </Switch>
       </Router>
     </Provider>

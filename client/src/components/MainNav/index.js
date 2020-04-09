@@ -30,7 +30,7 @@ function MainNav() {
                         <Link className="nav-link" to="/ticketrequest">Submit Ticket</Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/ticketrequest">Ticket Status</NavLink>
+                        <Link className="nav-link" to="/ticketlist">Ticket Status</Link>
                     </NavItem>
                     <NavItem>
                         <NavLink href="#">Contact</NavLink>

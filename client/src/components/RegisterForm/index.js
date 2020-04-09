@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
-import { P } from "../Text";
+import { P } from "../Tags";
 import { useSelector, useDispatch } from "react-redux";
 import { register, clearErrors } from "../../actions/authAction";
 

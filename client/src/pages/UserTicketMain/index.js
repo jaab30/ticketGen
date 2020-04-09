@@ -9,17 +9,20 @@ import {
     Label,
     Input
 } from "reactstrap";
-import { P } from "../../components/Text";
+import { P } from "../../components/Tags";
 import API from "../../utils/API";
 import MainNav from "../../components/MainNav";
 import Moment from "react-moment";
 import { useSelector } from "react-redux";
+import { useHistory, Link } from "react-router-dom";
+import Icon from "../../components/Icon";
 
 
 
 function TicketMain() {
 
     const user = useSelector(state => state.authReducer.user);
+    const history = useHistory();
 
     const [date] = useState(Date.now());
     const [tixId, setTixId] = useState("0001-JA-0420");
@@ -40,7 +43,7 @@ function TicketMain() {
         API.addTicket(dataObj)
             .then(data => {
                 console.log(data);
-
+                history.push("/ticketlist")
             })
             .catch(err => console.log(err));
     }
@@ -82,8 +85,9 @@ function TicketMain() {
                         <Button onClick={handleTicketForm} color="dark">Submit Ticket</Button>
                     </Row>
                 </Form>
+                <Icon className="far fa-arrow-alt-circle-left fa-2x mt-3 ml-3 text-dark" onClick={history.goBack} />
             </Container>
-        </React.Fragment>
+        </React.Fragment >
 
     )
 }

@@ -27,6 +27,10 @@ const UserSchema = new Schema({
     address2: {
         type: String
     },
+    city: {
+        type: String,
+        required: true
+    },
     state: {
         type: String,
         required: true

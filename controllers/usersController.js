@@ -7,10 +7,11 @@ const jwt = require("jsonwebtoken");
 module.exports = {
 
     register: function (req, res) {
+        console.log(req.body)
 
-        const { firstName, lastName, email, password, address, address2, state, zip, phoneNumber, role } = req.body;
+        const { firstName, lastName, email, password, address, address2, city, state, zip, phoneNumber, role } = req.body;
 
-        if (!firstName || !lastName || !email || !password || !address || !state || !zip || !phoneNumber) {
+        if (!firstName || !lastName || !email || !password || !address || !city || !state || !zip || !phoneNumber) {
             return res.status(400).json({ msg: "Please enter all fields" })
         }
         var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
@@ -30,6 +31,7 @@ module.exports = {
                     email,
                     address,
                     address2,
+                    city,
                     state,
                     zip,
                     phoneNumber,
@@ -39,15 +41,13 @@ module.exports = {
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(password, salt, (err, hash) => {
                         if (err) throw err;
-                        // console.log("1.",newUser);
 
                         newUser.password = hash;
-                        console.log("2.", newUser);
 
                         // Save the new user to the DB
                         newUser.save()
                             .then(user => {
-                                const { firstName, lastName, email, address, state, zip, phoneNumber, role } = user;
+                                const { firstName, lastName, email, address, address2, city, state, zip, phoneNumber, role } = user;
 
                                 jwt.sign(
                                     { id: user.id }, config.get("jwtSecret"), { expiresIn: 3600 }, (err, token) => {
@@ -55,11 +55,13 @@ module.exports = {
                                         res.json({
                                             token,
                                             user: {
-                                                id: user.id,
+                                                _id: user.id,
                                                 firstName,
                                                 lastName,
                                                 email,
                                                 address,
+                                                address2,
+                                                city,
                                                 state,
                                                 zip,
                                                 phoneNumber,
@@ -77,7 +79,6 @@ module.exports = {
     },
 
     auth: function (req, res) {
-        console.log(req.body);
 
         const { email, password, role } = req.body;
 
@@ -96,7 +97,7 @@ module.exports = {
                         jwt.sign(
                             { id: user.id }, config.get("jwtSecret"), { expiresIn: 3600 }, (err, token) => {
                                 if (err) throw err
-                                const { firstName, lastName, email, address, state, zip, phone } = user;
+                                const { firstName, lastName, email, address, address2, city, state, zip, phoneNumber } = user;
                                 res.json({
                                     token, user: {
                                         _id: user.id,
@@ -104,9 +105,11 @@ module.exports = {
                                         lastName,
                                         email,
                                         address,
+                                        address2,
+                                        city,
                                         state,
                                         zip,
-                                        phone
+                                        phoneNumber
                                     }
                                 })
                             }
@@ -118,7 +121,6 @@ module.exports = {
     },
 
     getUser: function (req, res) {
-        console.log("back end user");
 
         User.findById(req.user.id)
             .select("-password")
