@@ -11,6 +11,7 @@ import MainNav from "../../components/MainNav";
 import ProfileImage from "../../components/ProfileImage";
 import { useSelector, useDispatch } from "react-redux";
 import { loadUserTickets } from "../../actions/ticketAction";
+import Icon from "../../components/Icon";
 import "./style.css";
 
 
@@ -53,7 +54,7 @@ function UserDashboard() {
                     <Col md={6} className="mt-4 profileInfo">
                         <Row>
                             <Col md={12}> <H1 className="display-5 mb-4 mt-1 text-center text-dark">Profile Info</H1></Col>
-                            <Col md={12}> <P clssName="bk-white"><strong>email:</strong> {email}</P></Col>
+                            <Col md={12}> <P className="bk-white"><strong>email:</strong> {email}</P></Col>
                             <Col md={6} className="pr-2"> <P><strong>First Name:</strong> {firstName}</P></Col>
                             <Col md={6} className="pl-0"> <P><strong>Last Name:</strong> {lastName}</P></Col>
                             <Col md={12}> <P><strong>Address:</strong> {address}</P></Col>
@@ -67,10 +68,10 @@ function UserDashboard() {
                 </Row>
 
                 <Row className="mt-4">
-                    <Col md={3} className="mt-4"><Link to="/ticketrequest"><Button outline color="secondary" size="lg" block>Submit a Ticket</Button></Link></Col>
-                    <Col md={3} className="mt-4"><Link to="/ticketlist"><Button outline color="secondary" size="lg" block>Ticket Status</Button></Link></Col>
-                    <Col md={3} className="mt-4"><Button outline color="secondary" size="lg" block>Update Profile</Button></Col>
-                    <Col md={3} className="mt-4"><Button outline color="secondary" size="lg" block>Contact</Button></Col>
+                    <Col md={3} className="mt-4"><Link to="/ticketrequest"><Button outline color="secondary" size="lg" block> <Icon className="far fa-clipboard fa-1x mr-3 text-dark" />Submit a Ticket</Button></Link></Col>
+                    <Col md={3} className="mt-4"><Link to="/ticketlist"><Button outline color="secondary" size="lg" block><Icon className="far fa-hourglass fa-1x mr-3 text-dark" />Ticket Status</Button></Link></Col>
+                    <Col md={3} className="mt-4"><Button outline color="secondary" size="lg" block><Icon className="far fa-edit fa-1x mr-3 text-dark" />Update Profile</Button></Col>
+                    <Col md={3} className="mt-4"><Button outline color="secondary" size="lg" block><Icon className="far fa-question-circle fa-1x mr-3 text-dark" />Contact</Button></Col>
                 </Row>
 
             </Container>

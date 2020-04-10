@@ -11,16 +11,19 @@ module.exports = {
     },
     save: function (req, res) {
 
-        const { tixId, date, subject, description, userId } = req.body;
-        console.log("reqBody", req.body);
+        const { tixId, date, subject, description, status, userId } = req.body;
+        if (!subject || !description) {
+            return res.status(400).json({ msg: "Please enter all fields" })
+        }
 
         const newTicket = new UserTicket({
             tixId,
             date,
             subject,
-            description
+            description,
+            status
         });
-        console.log(newTicket);
+
         newTicket.save()
             .then(({ _id }) => User.findByIdAndUpdate({ _id: userId }, { $push: { tickets: _id } }, { new: true }))
             .then(data => res.json(data))

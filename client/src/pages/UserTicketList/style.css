@@ -1,0 +1,12 @@
+/* .listRow {
+    min-height: 400px;
+} */
+
+table {
+    background-color: hsl(0, 0%, 89%, .4);
+    padding: 20px;
+}
+
+/* td {
+    padding: 20px;
+} */

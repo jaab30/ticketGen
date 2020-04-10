@@ -15,6 +15,10 @@ const UserTicketSchema = new Schema({
         type: String,
         required: true
     },
+    status: {
+        type: String,
+        required: true
+    },
     comments: {
         type: Array
     },

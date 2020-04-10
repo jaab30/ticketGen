@@ -3,6 +3,7 @@ import { NavLink } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { logout } from "../../actions/authAction";
 import { clearTickets } from "../../actions/ticketAction";
+import { clearErrors } from "../../actions/authAction";
 
 
 
@@ -13,6 +14,7 @@ function Logout() {
     const handleClick = () => {
         dispatch(logout());
         dispatch(clearTickets());
+        dispatch(clearErrors());
     }
 
     return (
