@@ -5,6 +5,11 @@
 table {
     background-color: hsl(0, 0%, 89%, .4);
     padding: 20px;
+    border-color: lightskyblue;
+}
+
+tr:hover {
+    cursor: pointer;
 }
 
 /* td {

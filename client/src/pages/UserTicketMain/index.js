@@ -66,18 +66,7 @@ function TicketMain() {
             status
         }
         dispatch(addTicket(dataObj))
-
-
-        // history.push("/ticketlist")
-        // dispatch(clearErrors());
-        // API.addTicket(dataObj)
-        //     .then(data => {
-        //         history.push("/ticketlist")
-        //     })
-        //     .catch(err => console.log(err));
     }
-
-
 
     const generateTixId = () => {
         let lastIdNum;
@@ -104,9 +93,9 @@ function TicketMain() {
                             <h2 className="display-4 text-dark text-center">Request Service Ticket</h2>
                             {msg ? <Alert color="danger">{msg}</Alert> : null}
                             <Row form>
-                                <Col md={6}><P className="mt-4"><Moment format="MMMM Do YYYY">{dateToFormat}</Moment></P></Col>
+                                <Col md={6}><P className="mt-4"><Moment format="MMMM Do, YYYY">{dateToFormat}</Moment></P></Col>
                                 <Col md={6}><P className="mt-4 text-right">Ticket ID: {tixId}</P></Col>
-                                <Col md={10}>
+                                <Col md={12}>
                                     <FormGroup>
                                         <Label for="ticketSubject">Subject</Label>
                                         <Input
@@ -135,7 +124,7 @@ function TicketMain() {
                         </Form>
                     </Col>
                     <Col md={12} className="text-center">
-                        <Icon className="far fa-arrow-alt-circle-left fa-2x mt-3 ml-3 text-dark" onClick={history.goBack} />
+                        <Icon className="back-btn far fa-arrow-alt-circle-left fa-2x mt-3 ml-3 text-primary" onClick={history.goBack} />
                     </Col>
                 </Row>
 

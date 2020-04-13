@@ -1,0 +1,44 @@
+.detail-container p {
+    font-size: 1.1em;
+    margin: 5px 0;
+    padding: 3px 3px 3px 8px;
+}
+.detail-comment-box {
+    background-color: white;
+    border-radius: 5px;
+    min-height: 100px;
+}
+
+div.detail-box-wrapper {
+    background: white;
+    min-height: 100px;
+    border-radius: 5px;
+
+    /* padding:0 */
+
+}
+div.comment-wrapper {
+    background: rgb(226, 234, 255, .5);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.single-comment-col {
+    padding: 0;
+}
+
+p.comment-text {
+    margin:0;
+    padding: 0;
+}
+p.detail-box  {
+    background-color: white;
+    border-radius: 5px;
+    /* box-shadow: 2px 2px 10px rgb(141, 137, 137, .5); */
+    min-height: 100px;
+}
+
+p.status-text {
+    font-size: 1.5em;
+}

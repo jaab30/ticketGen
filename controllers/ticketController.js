@@ -5,7 +5,7 @@ module.exports = {
 
     findAll: function (req, res) {
         UserTicket.find()
-            .then(items => res.json(items))
+            .then(tickets => res.json(tickets))
             .catch(err => console.log(err));
 
     },
@@ -26,6 +26,17 @@ module.exports = {
 
         newTicket.save()
             .then(({ _id }) => User.findByIdAndUpdate({ _id: userId }, { $push: { tickets: _id } }, { new: true }))
+            .then(data => res.json(data))
+            .catch(err => console.log(err));
+    },
+    addComment: function (req, res) {
+
+        const { text } = req.body;
+        if (!text) {
+            return res.status(400).json({ msg: "Please enter all fields" })
+        }
+
+        UserTicket.findByIdAndUpdate(req.params.id, { $push: { comments: req.body } }, { new: true })
             .then(data => res.json(data))
             .catch(err => console.log(err));
     },

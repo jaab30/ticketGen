@@ -6,3 +6,6 @@ export const DELETE_TICKET = "DELETE_TICKET";
 export const CLEAR_TICKETS = "CLEAR_TICKETS";
 export const POST_ERROR = "POST_ERROR";
 export const POST_SUCCESS = "POST_SUCCESS";
+export const CURRENT_TICKET = "CURRENT_TICKET";
+export const POST_COMMENT = "POST_COMMENT";
+export const COMMENT_ERROR = "COMMENT_ERROR";

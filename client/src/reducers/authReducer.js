@@ -22,6 +22,7 @@ export default function (state = initialState, action) {
                 user: action.payload
             };
         case "LOGIN_SUCCESS":
+        //if user.role===admin - admin-token else user-token
         case "REGISTER_SUCCESS":
             localStorage.setItem("token", action.payload.token);
             return {

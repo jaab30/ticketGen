@@ -36,7 +36,7 @@ function RegisterForm() {
         }
         if (isAuthenticated) {
             dispatch(clearErrors());
-            history.push("/dashboard");
+            history.push("/user/dashboard");
         }
 
     }, [error, isAuthenticated, dispatch, history])
