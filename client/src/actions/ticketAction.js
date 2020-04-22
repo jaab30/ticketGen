@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOAD_TICKETS, LOAD_USER_TICKETS, POST_TICKET, UPDATE_TICKET, DELETE_TICKET, CLEAR_TICKETS, POST_ERROR, POST_SUCCESS, CURRENT_TICKET, POST_COMMENT, COMMENT_ERROR } from "../actions/actions"
+import { LOAD_TICKETS, LOAD_USER_TICKETS, POST_TICKET, DELETE_TICKET, CLEAR_TICKETS, POST_ERROR, POST_SUCCESS, CURRENT_TICKET, POST_COMMENT, COMMENT_ERROR } from "../actions/actions"
 import { tokenConfig, returnErrors } from "./authAction";
 
 export const loadAllTickets = () => dispatch => {
@@ -59,7 +59,6 @@ export const addComment = (id, data) => dispatch => {
 }
 
 
-
 export const clearTickets = () => {
     return {
         type: CLEAR_TICKETS
@@ -67,8 +66,6 @@ export const clearTickets = () => {
 }
 
 export const currentTicket = (id) => {
-    console.log("current Action");
-
     return {
         type: CURRENT_TICKET,
         payload: id

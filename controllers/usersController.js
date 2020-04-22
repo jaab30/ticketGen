@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 module.exports = {
 
     register: function (req, res) {
-        console.log(req.body)
 
         const { firstName, lastName, email, password, address, address2, city, state, zip, phoneNumber, role } = req.body;
 
@@ -127,6 +126,32 @@ module.exports = {
             .populate("tickets")
             .then(user => res.json(user))
             .catch(err => console.log(res.status(404).json({ success: false })));
+    },
+
+    updateUser: function (req, res) {
+
+        const { firstName, lastName, address, address2, city, state, zip, phoneNumber } = req.body;
+        console.log(zip);
+
+        if (!firstName || !lastName || !address || !city || !state || !zip || !phoneNumber) {
+            return res.status(400).json({ msg: "Please enter all fields" })
+        }
+
+        User.findByIdAndUpdate(req.params.id,
+            {
+                firstName,
+                lastName,
+                address,
+                address2,
+                city,
+                state,
+                zip,
+                phoneNumber
+            },
+            { new: true })
+            .then(data => res.json(data))
+            .catch(err => console.log(err));
+
     }
 
 }

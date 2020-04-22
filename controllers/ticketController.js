@@ -1,6 +1,8 @@
 const UserTicket = require("../models/UserTicket");
 const User = require("../models/user");
 
+
+
 module.exports = {
 
     findAll: function (req, res) {
@@ -44,6 +46,13 @@ module.exports = {
         UserTicket.findByIdAndDelete(req.params.id)
             .then(items => res.json({ success: true }))
             .catch(err => console.log(res.status(404).json({ success: false })));
+    },
+    imageUpload: function (req, res) {
+        console.log("image", req.file);
+        console.log("image", req.body);
+        console.log("image", req.name);
+
+        res.json({ file: req.file });
     }
 
 }

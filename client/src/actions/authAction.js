@@ -1,5 +1,6 @@
 
 import axios from "axios";
+import { UPDATE_PROFILE, UPDATE_ERROR, UPDATE_SUCCESS } from "../actions/actions";
 
 // Return errors
 export const returnErrors = (msg, status, id = null) => {
@@ -112,6 +113,30 @@ export const tokenConfig = getState => {
     return config
 }
 
+
+export const updateProfile = (id, data) => (dispatch, getState) => {
+    axios.put("/api/users/user/update/" + id, data, tokenConfig(getState))
+        .then(data => {
+            console.log(data)
+            dispatch({
+                type: UPDATE_PROFILE,
+                payload: data.data
+            })
+        })
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status, UPDATE_ERROR));
+            dispatch({
+                type: UPDATE_ERROR,
+
+            })
+        })
+}
+
+export const updateSuccess = () => {
+    return {
+        type: UPDATE_SUCCESS
+    }
+}
 
 
 

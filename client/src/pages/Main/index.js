@@ -31,7 +31,7 @@ function Main() {
                     <P className="textLogin text-center" color="light">Not registered yet..? Please <Span className="linkSpan" onClick={handleRegisterSwitch}>Register</Span></P> </> :
                 <>
                     <RegisterForm />
-                    <P className="textLogin text-center"><Span className="linkSpan" onClick={handleRegisterSwitch}>Back</Span></P>
+                    <P className="textLogin text-center">Already registered..? Please <Span className="linkSpan" onClick={handleRegisterSwitch}>Login</Span></P>
                 </>
             }
         </React.Fragment>

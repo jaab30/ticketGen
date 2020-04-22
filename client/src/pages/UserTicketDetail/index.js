@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import Moment from "react-moment";
-import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, CustomInput, Button, Alert } from 'reactstrap';
 import { H1, P } from "../../components/Tags";
 import MainNav from "../../components/MainNav";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,6 +11,8 @@ import { COMMENT_ERROR } from "../../actions/actions";
 import { postSuccess } from "../../actions/ticketAction";
 import { clearErrors } from "../../actions/authAction";
 import Icon from "../../components/Icon";
+
+import API from "../../utils/API";
 
 
 function UserTicketDetail() {
@@ -24,6 +26,7 @@ function UserTicketDetail() {
     const dispatch = useDispatch();
 
     const [commentPost, setCommentPost] = useState("");
+    const [image, setImage] = useState("");
     const [isLoaded, setIsLoaded] = useState(false);
     const [msg, setMsg] = useState(null);
 
@@ -43,6 +46,20 @@ function UserTicketDetail() {
 
     }, [error, isPostSuccess])
 
+    const handleImageForm = (e) => {
+        e.preventDefault();
+
+        console.log(image);
+
+        API.addImage()
+            .then(data => {
+                console.log(data);
+
+            })
+            .catch(err => console.log(err));
+
+
+    }
     const handleCommentsForm = (e) => {
         e.preventDefault();
 
@@ -133,6 +150,25 @@ function UserTicketDetail() {
                                 </Col>
                                 <Col md={12}>
                                     <P className="mt-1"><strong>Images:</strong></P>
+                                    <Form action="http://localhost:8000/api/ticket/image/upload" method="post">
+                                        <Row>
+                                            <Col md={4}>
+                                                <FormGroup>
+                                                    <CustomInput
+                                                        type="file"
+                                                        id="ImageBrowser"
+                                                        name="file"
+                                                        label="Upload your Image"
+                                                    // value={image}
+                                                    // onChange={(e) => { setImage(e.target.name) }}
+                                                    />
+                                                </FormGroup>
+                                            </Col>
+                                            <Col md={2}>
+                                                <Button type="submit" color="dark">Submit Image</Button>
+                                            </Col>
+                                        </Row>
+                                    </Form>
                                 </Col>
                                 <Col md={12} className="detail-box-wrapper">
                                     <P className="mt-1"> {images} </P>

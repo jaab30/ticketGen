@@ -19,3 +19,6 @@ a.dash-link:hover {
 i.dash-icon:hover {
     color: white;
 }
+i.update-icon:hover {
+    cursor: pointer;
+}

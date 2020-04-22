@@ -1,4 +1,4 @@
-import { LOAD_TICKETS, LOAD_USER_TICKETS, POST_TICKET, UPDATE_TICKET, DELETE_TICKET, CLEAR_TICKETS, POST_SUCCESS, CURRENT_TICKET, POST_COMMENT } from "../actions/actions"
+import { LOAD_TICKETS, LOAD_USER_TICKETS, POST_TICKET, DELETE_TICKET, CLEAR_TICKETS, POST_SUCCESS, CURRENT_TICKET, POST_COMMENT } from "../actions/actions"
 
 const initialState = {
     allTickets: [],
@@ -40,10 +40,6 @@ export default function (state = initialState, action) {
                 currentTicket: action.payload,
                 isPostSuccess: true
             }
-        case UPDATE_TICKET:
-            return
-        case DELETE_TICKET:
-            return
         case POST_SUCCESS:
             return {
                 ...state,
@@ -56,6 +52,8 @@ export default function (state = initialState, action) {
                 currentTicket: {},
                 isPostSuccess: false
             }
+        case DELETE_TICKET:
+            return
         default:
             return state;
 

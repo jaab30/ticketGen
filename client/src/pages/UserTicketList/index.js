@@ -42,7 +42,7 @@ function UserTicketList() {
         <React.Fragment>
             <MainNav />
             <Container>
-                <Row className="justify-content-center listRow">
+                <Row className="justify-content-center listRow mb-4">
                     <Col md={12} className="mt-4 mb-4">
                         <H1 className="display-4 text-center mt-4 mb-1">Tickets</H1>
                     </Col>
