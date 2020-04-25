@@ -1,65 +1,78 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import Moment from "react-moment";
-import { Container, Row, Col, Form, FormGroup, Label, Input, CustomInput, Button, Alert } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, CustomInput, Button, Alert, Spinner } from 'reactstrap';
 import { H1, P } from "../../components/Tags";
 import MainNav from "../../components/MainNav";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addComment } from "../../actions/ticketAction";
-import { COMMENT_ERROR } from "../../actions/actions";
-import { postSuccess } from "../../actions/ticketAction";
+import { addComment, postSuccess, addImage, isLoadingImage } from "../../actions/ticketAction";
+import { COMMENT_ERROR, IMAGE_ERROR } from "../../actions/actions";
 import { clearErrors } from "../../actions/authAction";
 import Icon from "../../components/Icon";
+import loading from "./images/loading.gif"
 
-import API from "../../utils/API";
 
 
 function UserTicketDetail() {
 
     const user = useSelector(state => state.authReducer.user);
-    const currentTicket = useSelector(state => state.ticketReducer.currentTicket);
+    const ticket = useSelector(state => state.ticketReducer);
+
     const isPostSuccess = useSelector(state => state.ticketReducer.isPostSuccess);
     const error = useSelector(state => state.errorReducer);
-    const { _id, tixId, date, subject, description, status, comments, images } = currentTicket;
+    const { _id, tixId, date, subject, description, status, comments, images } = ticket.currentTicket;
+    const { isLoading } = ticket;
     const history = useHistory();
     const dispatch = useDispatch();
 
     const [commentPost, setCommentPost] = useState("");
     const [image, setImage] = useState("");
     const [isLoaded, setIsLoaded] = useState(false);
-    const [msg, setMsg] = useState(null);
+    const [msgComment, setMsgComment] = useState(null);
+    const [msgImage, setMsgImage] = useState(null);
 
     const { firstName, lastName } = user;
 
     useEffect(() => {
 
         if (error.id === COMMENT_ERROR) {
-            setMsg(error.msg.msg)
+            setMsgComment(error.msg.msg)
+            dispatch(isLoadingImage(false))
+        }
+        if (error.id === IMAGE_ERROR) {
+            setMsgImage(error.msg.msg)
+            dispatch(isLoadingImage(false))
         }
 
         if (isPostSuccess) {
-            setMsg(null)
+            setMsgComment(null)
+            setMsgImage(null)
             dispatch(clearErrors());
             dispatch(postSuccess());
         }
-
     }, [error, isPostSuccess])
+
 
     const handleImageForm = (e) => {
         e.preventDefault();
+        dispatch(isLoadingImage(true))
+        const formData = new FormData();
+        formData.append('file', image)
+        formData.append('tixId', _id)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
 
-        console.log(image);
-
-        API.addImage()
-            .then(data => {
-                console.log(data);
-
-            })
-            .catch(err => console.log(err));
-
+        dispatch(addImage(formData, config))
+        // setIsLoaded(!isLoaded);
+        const inputImage = document.querySelector(".file-input");
+        inputImage.childNodes[1].textContent = "Upload your Image"
 
     }
+
     const handleCommentsForm = (e) => {
         e.preventDefault();
 
@@ -76,7 +89,8 @@ function UserTicketDetail() {
     }
 
     const clearAndBack = () => {
-        setMsg(null)
+        setMsgComment(null)
+        setMsgImage(null)
         dispatch(clearErrors());
         history.goBack();
         dispatch(postSuccess());
@@ -130,8 +144,8 @@ function UserTicketDetail() {
                                             <P className="mt-1"><strong>Comments:</strong></P>
                                         </Col>
                                         <Col md={12} className="detail-box-wrapper pt-2 pb-2">
-                                            {comments.map(comment => (
-                                                <Row className="comment-wrapper">
+                                            {comments.map((comment, i) => (
+                                                <Row key={i} className="comment-wrapper">
                                                     <Col md={6} className="single-comment-col">
                                                         <P className="comment-text"><strong>From:</strong> {comment.from}</P>
                                                     </Col>
@@ -150,17 +164,18 @@ function UserTicketDetail() {
                                 </Col>
                                 <Col md={12}>
                                     <P className="mt-1"><strong>Images:</strong></P>
-                                    <Form action="http://localhost:8000/api/ticket/image/upload" method="post">
+                                    <Form onSubmit={handleImageForm}>
+                                        {msgImage ? <Alert color="danger">{msgImage}</Alert> : null}
                                         <Row>
                                             <Col md={4}>
                                                 <FormGroup>
                                                     <CustomInput
+                                                        className="file-input"
                                                         type="file"
                                                         id="ImageBrowser"
                                                         name="file"
                                                         label="Upload your Image"
-                                                    // value={image}
-                                                    // onChange={(e) => { setImage(e.target.name) }}
+                                                        onChange={(e) => { setImage(e.target.files[0]) }}
                                                     />
                                                 </FormGroup>
                                             </Col>
@@ -171,11 +186,13 @@ function UserTicketDetail() {
                                     </Form>
                                 </Col>
                                 <Col md={12} className="detail-box-wrapper">
-                                    <P className="mt-1"> {images} </P>
+                                    {isLoading ? <Row><Col className="text-center" md={12}><Icon className="text-center mt-3 fas fa-spinner fa-pulse fa-3x" /></Col></Row> : images.map((img, i) => {
+                                        return <div className="loading"><img key={i} className="tixImages" src={"/api/ticket/image/" + img} width="100%" /></div>
+                                    })}
                                 </Col>
                                 <Col md={12}>
                                     <Form className="logForm bg-white mt-4 p-4 text-dark">
-                                        {msg ? <Alert color="danger">{msg}</Alert> : null}
+                                        {msgComment ? <Alert color="danger">{msgComment}</Alert> : null}
                                         <Row form>
                                             <Col md={12}>
                                                 <FormGroup>

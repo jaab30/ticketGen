@@ -48,7 +48,7 @@ function TicketMain() {
         if (isPostSuccess) {
             setMsg(null)
             dispatch(clearErrors());
-            history.push("/ticketlist");
+            history.push("/user/ticketlist");
             dispatch(postSuccess());
         }
 

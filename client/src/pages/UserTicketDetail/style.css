@@ -42,3 +42,14 @@ p.detail-box  {
 p.status-text {
     font-size: 1.5em;
 }
+
+.loading {
+    background-image: url('./images/loading.gif');
+    background-repeat: no-repeat;
+    width: 100px;
+    display:inline-block;
+    margin: 10px;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-size: 20px;
+  }

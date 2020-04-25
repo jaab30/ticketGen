@@ -34,6 +34,7 @@ module.exports = {
                     state,
                     zip,
                     phoneNumber,
+                    image: "",
                     role
                 })
                 // Generate the Hash for the password
@@ -96,7 +97,7 @@ module.exports = {
                         jwt.sign(
                             { id: user.id }, config.get("jwtSecret"), { expiresIn: 3600 }, (err, token) => {
                                 if (err) throw err
-                                const { firstName, lastName, email, address, address2, city, state, zip, phoneNumber } = user;
+                                const { firstName, lastName, email, address, address2, city, state, zip, phoneNumber, image } = user;
                                 res.json({
                                     token, user: {
                                         _id: user.id,
@@ -108,7 +109,8 @@ module.exports = {
                                         city,
                                         state,
                                         zip,
-                                        phoneNumber
+                                        phoneNumber,
+                                        image
                                     }
                                 })
                             }
@@ -152,6 +154,24 @@ module.exports = {
             .then(data => res.json(data))
             .catch(err => console.log(err));
 
-    }
+    },
+    userImageUpload: function (req, res) {
+        console.log("CONTROLLER");
 
+        console.log("BODY", req.body.userId);
+        console.log("FILE", req.file.filename);
+
+        if (req.file === undefined) return res.status(404).json({ msg: "Please enter a file" })
+
+        User.findByIdAndUpdate(req.body.userId,
+            {
+                image: req.file.filename
+            }, { new: true })
+            .then(data => {
+                console.log(data);
+
+                res.json(data)
+            })
+            .catch(err => console.log(err));
+    }
 }

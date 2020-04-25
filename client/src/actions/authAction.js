@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { UPDATE_PROFILE, UPDATE_ERROR, UPDATE_SUCCESS } from "../actions/actions";
+import { UPDATE_PROFILE, UPDATE_ERROR, UPDATE_SUCCESS, UPDATE_PROFILE_IMAGE, UPDATE_PROFILE_IMAGE_ERROR } from "../actions/actions";
 
 // Return errors
 export const returnErrors = (msg, status, id = null) => {
@@ -100,7 +100,7 @@ export const logout = () => {
 export const tokenConfig = getState => {
     //get token from local storage
     const token = getState().authReducer.token;
-    // Headres
+    // Headers
     const config = {
         headers: {
             "Content-type": "application/json"
@@ -129,6 +129,23 @@ export const updateProfile = (id, data) => (dispatch, getState) => {
                 type: UPDATE_ERROR,
 
             })
+        })
+}
+
+
+export const updateProfileImage = (data, config) => (dispatch, getState) => {
+
+    axios.post("/api/users/user/image/upload", data, config)
+        .then(data => {
+            console.log(data.data);
+
+            dispatch({
+                type: UPDATE_PROFILE_IMAGE,
+                payload: data.data.image
+            })
+        })
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status, UPDATE_PROFILE_IMAGE_ERROR));
         })
 }
 

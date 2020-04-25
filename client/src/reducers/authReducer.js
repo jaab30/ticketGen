@@ -1,4 +1,4 @@
-import { UPDATE_PROFILE, UPDATE_SUCCESS } from "../actions/actions";
+import { UPDATE_PROFILE, UPDATE_SUCCESS, UPDATE_PROFILE_IMAGE } from "../actions/actions";
 
 const initialState = {
     token: localStorage.getItem("token"),
@@ -62,6 +62,16 @@ export default function (state = initialState, action) {
                     state: action.payload.state,
                     zip,
                     phoneNumber
+                }
+            };
+        case UPDATE_PROFILE_IMAGE:
+
+            return {
+                ...state,
+                isUpdateSuccess: true,
+                user: {
+                    ...state.user,
+                    image: action.payload
                 }
             };
         case UPDATE_SUCCESS:

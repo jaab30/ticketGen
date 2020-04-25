@@ -24,7 +24,13 @@ export default {
     addTicket: function (data) {
         return axios.post("/api/tickets", data)
     },
-    addImage: function () {
-        return axios.post("/api/ticket/image/upload")
+    addImage: function (data, config) {
+        return axios.post("/api/ticket/image/upload", data, config)
+    },
+    getFiles: function () {
+        return axios.get("/api/ticket/files")
+    },
+    getImage: function (imagename) {
+        return axios.get("/api/ticket/image/" + imagename)
     }
 }
