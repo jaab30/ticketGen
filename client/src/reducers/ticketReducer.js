@@ -1,9 +1,10 @@
-import { LOAD_TICKETS, LOAD_USER_TICKETS, POST_TICKET, DELETE_TICKET, CLEAR_TICKETS, POST_SUCCESS, CURRENT_TICKET, POST_COMMENT, POST_IMAGE, IS_LOADING } from "../actions/actions"
+import { LOAD_TICKETS, LOAD_USER_TICKETS, POST_TICKET, DELETE_TICKET, CLEAR_TICKETS, POST_SUCCESS, CURRENT_TICKET, POST_COMMENT, POST_IMAGE, IS_LOADING, POST_SINGLE_IMAGE } from "../actions/actions"
 
 const initialState = {
     allTickets: [],
     userTickets: [],
     currentTicket: {},
+    currentImage: {},
     isPostSuccess: false,
     isLoading: true
 }
@@ -47,6 +48,12 @@ export default function (state = initialState, action) {
                 ...state,
                 currentTicket: action.payload,
                 isPostSuccess: true,
+                isLoading: false
+            }
+        case POST_SINGLE_IMAGE:
+            return {
+                ...state,
+                currentImage: action.payload,
                 isLoading: false
             }
         case IS_LOADING:

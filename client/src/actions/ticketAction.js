@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOAD_TICKETS, LOAD_USER_TICKETS, POST_TICKET, DELETE_TICKET, CLEAR_TICKETS, POST_ERROR, POST_SUCCESS, CURRENT_TICKET, POST_COMMENT, COMMENT_ERROR, POST_IMAGE, IMAGE_ERROR, IS_LOADING } from "../actions/actions"
+import { LOAD_TICKETS, LOAD_USER_TICKETS, POST_TICKET, DELETE_TICKET, CLEAR_TICKETS, POST_ERROR, POST_SUCCESS, CURRENT_TICKET, POST_COMMENT, COMMENT_ERROR, POST_IMAGE, IMAGE_ERROR, IS_LOADING, POST_SINGLE_IMAGE } from "../actions/actions"
 import { tokenConfig, returnErrors } from "./authAction";
 
 export const loadAllTickets = () => dispatch => {
@@ -55,6 +55,22 @@ export const addComment = (id, data) => dispatch => {
             dispatch(returnErrors(err.response.data, err.response.status, COMMENT_ERROR));
         })
 }
+
+export const clearTickets = () => {
+    return {
+        type: CLEAR_TICKETS
+    }
+}
+
+export const currentTicket = (id) => {
+    return {
+        type: CURRENT_TICKET,
+        payload: id
+    }
+
+}
+// Image handlers *********************************************
+
 export const addImage = (data, config) => dispatch => {
 
     axios.post("/api/ticket/image/upload", data, config)
@@ -63,6 +79,21 @@ export const addImage = (data, config) => dispatch => {
 
             dispatch({
                 type: POST_IMAGE,
+                payload: data.data
+            })
+        })
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status, IMAGE_ERROR));
+        })
+}
+export const addImageNewTix = (data, config) => dispatch => {
+
+    axios.post("/api/tickets/newimage/upload", data, config)
+        .then(data => {
+            console.log(data.data);
+
+            dispatch({
+                type: POST_SINGLE_IMAGE,
                 payload: data.data
             })
         })
@@ -79,19 +110,7 @@ export const isLoadingImage = (status) => {
     }
 }
 
-export const clearTickets = () => {
-    return {
-        type: CLEAR_TICKETS
-    }
-}
 
-export const currentTicket = (id) => {
-    return {
-        type: CURRENT_TICKET,
-        payload: id
-    }
-
-}
 
 
 

@@ -27,7 +27,7 @@ module.exports = {
 
         const { tixId, date, subject, description, status, userId } = req.body;
         if (!subject || !description) {
-            return res.status(400).json({ msg: "Please enter all fields" })
+            return res.status(400).json({ msg: "Please enter Subject and Description fields" })
         }
 
         const newTicket = new UserTicket({
@@ -90,6 +90,18 @@ module.exports = {
                 res.status(404).json({ err: "Not and image" })
             }
         });
+    },
+    imageUploadNewTix: function (req, res) {
+        console.log(req.file);
+        if (req.file === undefined) return res.status(404).json({ msg: "Please enter a file" })
+        if (req.file.mimetype === "image/jpeg" || req.file.mimetype === "image/png") {
+            res.json({ file: req.file })
+
+        } else {
+            return res.status(404).json({ err: "Not and image" })
+        }
+
+
     },
     imageUpload: function (req, res) {
         console.log(req.file);

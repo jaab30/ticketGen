@@ -11,14 +11,14 @@ import {
     Alert
 } from "reactstrap";
 import { P } from "../../components/Tags";
-import API from "../../utils/API";
 import MainNav from "../../components/MainNav";
+import ImageLoader from "../../components/ImageLoader";
 import Moment from "react-moment";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import Icon from "../../components/Icon";
 import { POST_ERROR } from "../../actions/actions";
-import { addTicket, postSuccess } from "../../actions/ticketAction";
+import { addTicket, addImageNewTix, postSuccess } from "../../actions/ticketAction";
 import { clearErrors } from "../../actions/authAction";
 
 
@@ -26,7 +26,7 @@ import { clearErrors } from "../../actions/authAction";
 function TicketMain() {
 
     const user = useSelector(state => state.authReducer.user);
-    const userTickets = useSelector(state => state.ticketReducer.userTickets);
+    const { userTickets, currentImage } = useSelector(state => state.ticketReducer);
     const isPostSuccess = useSelector(state => state.ticketReducer.isPostSuccess);
     const error = useSelector(state => state.errorReducer);
     const history = useHistory();
@@ -35,11 +35,18 @@ function TicketMain() {
     const [date] = useState(Date.now());
     const [tixId, setTixId] = useState("");
     const [subject, setSubject] = useState("");
+    const [images, setImages] = useState([]);
     const [description, setDescription] = useState("");
     const [status] = useState("Submitted");
     const [msg, setMsg] = useState(null);
 
+    let imageArr = [];
+
+
     useEffect(() => {
+        console.log("current", currentImage);
+
+        imageArr = images.concat(currentImage)
         generateTixId();
         if (error.id === POST_ERROR) {
             setMsg(error.msg.msg)
@@ -51,8 +58,10 @@ function TicketMain() {
             history.push("/user/ticketlist");
             dispatch(postSuccess());
         }
+        console.log("Array", imageArr);
 
-    }, [error, isPostSuccess])
+
+    }, [error, isPostSuccess, currentImage])
 
     const handleTicketForm = (e) => {
         e.preventDefault();
@@ -109,7 +118,7 @@ function TicketMain() {
                                 </Col>
                                 <Col md={12}>
                                     <FormGroup>
-                                        <Label for="registerLastName">Description</Label>
+                                        <Label for="ticketDescription">Description</Label>
                                         <Input
                                             type="textarea"
                                             name="description"
@@ -119,7 +128,18 @@ function TicketMain() {
                                         />
                                     </FormGroup>
                                 </Col>
-                                <Button onClick={handleTicketForm} color="dark">Submit Ticket</Button>
+                                <Col md={12}>
+                                    <P className="mt-1">Images:</P>
+                                </Col>
+                                <ImageLoader
+                                    _id={""}
+                                    images={imageArr}
+                                    isLoading={""}
+                                    error={error}
+                                    addImageAction={addImageNewTix}
+                                />
+
+                                <Button className="mt-2" onClick={handleTicketForm} color="dark">Submit Ticket</Button>
                             </Row>
                         </Form>
                     </Col>

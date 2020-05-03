@@ -13,8 +13,8 @@ div.detail-box-wrapper {
     background: white;
     min-height: 100px;
     border-radius: 5px;
-
-    /* padding:0 */
+    border: solid 1px lightgray;
+    padding:0
 
 }
 div.comment-wrapper {
@@ -44,6 +44,7 @@ p.status-text {
 }
 
 .loading {
+    position: relative;
     background-image: url('./images/loading.gif');
     background-repeat: no-repeat;
     width: 100px;
@@ -53,3 +54,15 @@ p.status-text {
     background-position: center;
     background-size: 20px;
   }
+
+  .img-del-btn {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      border-radius: 5px;
+      padding: 2px 5px;
+      font-size: small;
+  }
+
+
+ 
