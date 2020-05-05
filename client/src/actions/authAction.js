@@ -1,6 +1,14 @@
 
 import axios from "axios";
-import { UPDATE_PROFILE, UPDATE_ERROR, UPDATE_SUCCESS, UPDATE_PROFILE_IMAGE, UPDATE_PROFILE_IMAGE_ERROR } from "../actions/actions";
+import {
+    UPDATE_PROFILE,
+    UPDATE_ERROR,
+    UPDATE_SUCCESS,
+    UPDATE_PROFILE_IMAGE,
+    UPDATE_PROFILE_IMAGE_ERROR,
+    PROFILE_IMAGE_LOADING,
+    DELETE_PROFILE_IMAGE
+} from "../actions/actions";
 
 // Return errors
 export const returnErrors = (msg, status, id = null) => {
@@ -61,9 +69,6 @@ export const login = ({ email, password, role }) => dispatch => {
 
             })
         })
-
-
-
 }
 
 export const register = ({ firstName, lastName, email, address, address2, city, state, zip, phoneNumber, password, role }) => dispatch => {
@@ -147,6 +152,29 @@ export const updateProfileImage = (data, config) => (dispatch, getState) => {
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status, UPDATE_PROFILE_IMAGE_ERROR));
         })
+}
+export const isLoadingProfileImage = (status) => {
+    return {
+        type: PROFILE_IMAGE_LOADING,
+        payload: status
+    }
+}
+export const deleteProfileImage = (filename, userId) => dispatch => {
+    console.log("delete IMG Action", userId);
+    console.log("delete IMG Action");
+
+    axios.delete("/api/ticket/image/" + userId + "/" + filename)
+        .then(data => {
+            console.log(data);
+
+            dispatch({
+                type: DELETE_PROFILE_IMAGE
+            })
+        })
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status, UPDATE_PROFILE_IMAGE_ERROR));
+        })
+
 }
 
 export const updateSuccess = () => {

@@ -8,7 +8,7 @@ import ImageLoader from "../../components/ImageLoader";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addComment, postSuccess, addImage, isLoadingImage } from "../../actions/ticketAction";
-import { COMMENT_ERROR, IMAGE_ERROR } from "../../actions/actions";
+import { COMMENT_ERROR } from "../../actions/actions";
 import { clearErrors } from "../../actions/authAction";
 import Icon from "../../components/Icon";
 
@@ -60,12 +60,12 @@ function UserTicketDetail(props) {
 
     }
 
-    const clearAndBack = () => {
-        setMsgComment(null)
-        dispatch(clearErrors());
-        history.goBack();
-        dispatch(postSuccess());
-    }
+    // const clearAndBack = () => {
+    //     setMsgComment(null)
+    //     dispatch(clearErrors());
+    //     history.goBack();
+    //     dispatch(postSuccess());
+    // }
 
     const statusIcon = () => {
 
@@ -170,7 +170,7 @@ function UserTicketDetail(props) {
 
                         </Col>
                         <Col md={12} className="text-center">
-                            <Icon className="back-btn far fa-arrow-alt-circle-left fa-2x mt-3 ml-3 mb-4 text-primary" onClick={clearAndBack} />
+                            <Icon className="back-btn far fa-arrow-alt-circle-left fa-2x mt-3 ml-3 mb-4 text-primary" onClick={history.goBack} />
                         </Col>
                     </Row>
 

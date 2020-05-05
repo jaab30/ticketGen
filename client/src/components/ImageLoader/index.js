@@ -4,6 +4,7 @@ import { Row, Col, Form, FormGroup, CustomInput, Button, Alert } from 'reactstra
 import { P } from "../Tags";
 import { useDispatch } from "react-redux";
 import { addImage, isLoadingImage } from "../../actions/ticketAction";
+import { clearErrors } from "../../actions/authAction";
 import { IMAGE_ERROR } from "../../actions/actions";
 
 import Icon from "../Icon";
@@ -26,6 +27,7 @@ function ImageLoader(props) {
         if (props.error.id === IMAGE_ERROR) {
             setMsgImage(props.error.msg.msg)
             dispatch(isLoadingImage(false))
+            dispatch(clearErrors());
         }
 
     }, [props.error])
@@ -49,6 +51,10 @@ function ImageLoader(props) {
 
     }
 
+    const removeImage = (img) => {
+        dispatch(props.removeImage(img))
+    }
+
     return (
         <React.Fragment>
 
@@ -56,7 +62,7 @@ function ImageLoader(props) {
                 <Form onSubmit={handleImageForm}>
                     {msgImage ? <Alert color="danger">{msgImage}</Alert> : null}
                     <Row>
-                        <Col md={4}>
+                        <Col className="p-0" md={4}>
                             <FormGroup>
                                 <CustomInput
                                     className="file-input"
@@ -76,7 +82,7 @@ function ImageLoader(props) {
             </Col>
             <Col md={12} className="detail-box-wrapper">
                 {props.isLoading ? <Row><Col className="text-center" md={12}><Icon className="text-center mt-3 fas fa-spinner fa-pulse fa-3x" /></Col></Row> : props.images.map((img, i) => {
-                    return <div className="loading"><img key={i} className="tixImages" src={"/api/ticket/image/" + img} alt="Ticket Images" width="100%" /><a className="img-del-btn bg-dark text-white" href="#"><Icon className="fas fa-trash-alt" /></a></div>
+                    return <div className="loading"><img key={i} className="tixImages" src={"/api/ticket/image/" + img} alt="Ticket Images" width="100%" /><a className="img-del-btn bg-dark text-white" onClick={() => removeImage(img)}><Icon className="fas fa-trash-alt" /></a></div>
                 })}
             </Col>
 

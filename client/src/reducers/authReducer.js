@@ -1,10 +1,17 @@
-import { UPDATE_PROFILE, UPDATE_SUCCESS, UPDATE_PROFILE_IMAGE } from "../actions/actions";
+import {
+    UPDATE_PROFILE,
+    UPDATE_SUCCESS,
+    UPDATE_PROFILE_IMAGE,
+    PROFILE_IMAGE_LOADING,
+    DELETE_PROFILE_IMAGE
+} from "../actions/actions";
 
 const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: false,
     isLoading: false,
     isUpdateSuccess: false,
+    isImageLoading: true,
     user: null
 }
 
@@ -65,13 +72,28 @@ export default function (state = initialState, action) {
                 }
             };
         case UPDATE_PROFILE_IMAGE:
-
             return {
                 ...state,
                 isUpdateSuccess: true,
+                isImageLoading: false,
                 user: {
                     ...state.user,
                     image: action.payload
+                }
+            };
+        case PROFILE_IMAGE_LOADING:
+            return {
+                ...state,
+                isImageLoading: action.payload
+            };
+        case DELETE_PROFILE_IMAGE:
+            return {
+                ...state,
+                isUpdateSuccess: true,
+                isImageLoading: false,
+                user: {
+                    ...state.user,
+                    image: ""
                 }
             };
         case UPDATE_SUCCESS:

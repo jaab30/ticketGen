@@ -1,5 +1,22 @@
 import axios from "axios";
-import { LOAD_TICKETS, LOAD_USER_TICKETS, POST_TICKET, DELETE_TICKET, CLEAR_TICKETS, POST_ERROR, POST_SUCCESS, CURRENT_TICKET, POST_COMMENT, COMMENT_ERROR, POST_IMAGE, IMAGE_ERROR, IS_LOADING, POST_SINGLE_IMAGE } from "../actions/actions"
+import {
+    LOAD_TICKETS,
+    LOAD_USER_TICKETS,
+    POST_TICKET,
+    CLEAR_TICKETS,
+    POST_ERROR,
+    POST_SUCCESS,
+    CURRENT_TICKET,
+    POST_COMMENT,
+    COMMENT_ERROR,
+    POST_IMAGE,
+    IMAGE_ERROR,
+    IS_LOADING,
+    POST_SINGLE_IMAGE,
+    CLEAR_SINGLE_IMAGE,
+    UPDATE_PROFILE_IMAGE_ERROR,
+    DELETE_NEW_TIX_IMAGE
+} from "../actions/actions"
 import { tokenConfig, returnErrors } from "./authAction";
 
 export const loadAllTickets = () => dispatch => {
@@ -52,6 +69,8 @@ export const addComment = (id, data) => dispatch => {
             })
         })
         .catch(err => {
+            console.log(err.response.data);
+
             dispatch(returnErrors(err.response.data, err.response.status, COMMENT_ERROR));
         })
 }
@@ -83,6 +102,8 @@ export const addImage = (data, config) => dispatch => {
             })
         })
         .catch(err => {
+            console.log(err.response.data);
+
             dispatch(returnErrors(err.response.data, err.response.status, IMAGE_ERROR));
         })
 }
@@ -90,11 +111,11 @@ export const addImageNewTix = (data, config) => dispatch => {
 
     axios.post("/api/tickets/newimage/upload", data, config)
         .then(data => {
-            console.log(data.data);
+            console.log(data.data.file.filename);
 
             dispatch({
                 type: POST_SINGLE_IMAGE,
-                payload: data.data
+                payload: data.data.file.filename
             })
         })
         .catch(err => {
@@ -108,6 +129,28 @@ export const isLoadingImage = (status) => {
         type: IS_LOADING,
         payload: status
     }
+}
+export const clearCurrentImages = () => {
+
+    return {
+        type: CLEAR_SINGLE_IMAGE
+    }
+}
+
+export const imageDeleteNewTix = (filename) => dispatch => {
+
+    axios.delete("/api/ticket/newimage/" + filename)
+        .then(data => {
+
+            dispatch({
+                type: DELETE_NEW_TIX_IMAGE,
+                payload: filename
+            })
+        })
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status, UPDATE_PROFILE_IMAGE_ERROR));
+        })
+
 }
 
 

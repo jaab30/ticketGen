@@ -1,10 +1,23 @@
-import { LOAD_TICKETS, LOAD_USER_TICKETS, POST_TICKET, DELETE_TICKET, CLEAR_TICKETS, POST_SUCCESS, CURRENT_TICKET, POST_COMMENT, POST_IMAGE, IS_LOADING, POST_SINGLE_IMAGE } from "../actions/actions"
+import {
+    LOAD_TICKETS,
+    LOAD_USER_TICKETS,
+    POST_TICKET,
+    CLEAR_TICKETS,
+    POST_SUCCESS,
+    CURRENT_TICKET,
+    POST_COMMENT,
+    POST_IMAGE,
+    IS_LOADING,
+    POST_SINGLE_IMAGE,
+    CLEAR_SINGLE_IMAGE,
+    DELETE_NEW_TIX_IMAGE
+} from "../actions/actions"
 
 const initialState = {
     allTickets: [],
     userTickets: [],
     currentTicket: {},
-    currentImage: {},
+    currentImage: [],
     isPostSuccess: false,
     isLoading: true
 }
@@ -30,8 +43,6 @@ export default function (state = initialState, action) {
         case CURRENT_TICKET:
             state.currentTicket = {};
             const chosen = state.userTickets.filter(ticket => ticket._id === action.payload);
-            console.log(chosen);
-
             return {
                 ...state,
                 currentTicket: chosen[0],
@@ -53,8 +64,19 @@ export default function (state = initialState, action) {
         case POST_SINGLE_IMAGE:
             return {
                 ...state,
-                currentImage: action.payload,
+                currentImage: state.currentImage.concat(action.payload),
                 isLoading: false
+            }
+        case DELETE_NEW_TIX_IMAGE:
+            return {
+                ...state,
+                currentImage: state.currentImage.filter(item => item !== action.payload),
+                isLoading: false
+            }
+        case CLEAR_SINGLE_IMAGE:
+            return {
+                ...state,
+                currentImage: []
             }
         case IS_LOADING:
             return {
@@ -73,21 +95,8 @@ export default function (state = initialState, action) {
                 currentTicket: {},
                 isPostSuccess: false
             }
-        case DELETE_TICKET:
-            return
         default:
             return state;
 
-
-
-
-
-
-
-
     }
-
-
-
-
 }
