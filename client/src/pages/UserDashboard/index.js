@@ -82,7 +82,7 @@ function UserDashboard() {
                     <Col md={3} className="mt-4"><Link className="dash-link" to="/user/ticketrequest"><Button outline color="secondary" size="lg" block> <Icon className="far fa-clipboard fa-1x mr-3 dash-icon" />Submit a Ticket</Button></Link></Col>
                     <Col md={3} className="mt-4"><Link className="dash-link" to="/user/ticketlist"><Button outline color="secondary" size="lg" block><Icon className="far fa-hourglass fa-1x mr-3 dash-icon" />Ticket Status</Button></Link></Col>
                     <Col md={3} className="mt-4"><Button onClick={showUpdateForm} outline color="secondary" size="lg" block><Icon className="far fa-edit fa-1x mr-3 dash-icon" />Update Profile</Button></Col>
-                    <Col md={3} className="mt-4"><Button outline color="secondary" size="lg" block><Icon className="far fa-question-circle fa-1x mr-3 dash-icon" />Contact</Button></Col>
+                    <Col md={3} className="mt-4"><Link className="dash-link" to="/user/contact"><Button outline color="secondary" size="lg" block><Icon className="far fa-question-circle fa-1x mr-3 dash-icon" />Contact</Button></Link></Col>
                 </Row>
             </Container>
         </React.Fragment>

@@ -12,7 +12,6 @@ const storage = new GridFsStorage({
     file: (req, file) => {
 
         return new Promise((resolve, reject) => {
-            console.log("File Middleware", file);
 
             crypto.randomBytes(16, (err, buf) => {
                 if (err) {

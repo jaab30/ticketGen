@@ -69,8 +69,6 @@ export const addComment = (id, data) => dispatch => {
             })
         })
         .catch(err => {
-            console.log(err.response.data);
-
             dispatch(returnErrors(err.response.data, err.response.status, COMMENT_ERROR));
         })
 }
@@ -94,16 +92,12 @@ export const addImage = (data, config) => dispatch => {
 
     axios.post("/api/ticket/image/upload", data, config)
         .then(data => {
-            console.log(data.data);
-
             dispatch({
                 type: POST_IMAGE,
                 payload: data.data
             })
         })
         .catch(err => {
-            console.log(err.response.data);
-
             dispatch(returnErrors(err.response.data, err.response.status, IMAGE_ERROR));
         })
 }
@@ -111,8 +105,6 @@ export const addImageNewTix = (data, config) => dispatch => {
 
     axios.post("/api/tickets/newimage/upload", data, config)
         .then(data => {
-            console.log(data.data.file.filename);
-
             dispatch({
                 type: POST_SINGLE_IMAGE,
                 payload: data.data.file.filename
@@ -141,7 +133,6 @@ export const imageDeleteNewTix = (filename) => dispatch => {
 
     axios.delete("/api/ticket/newimage/" + filename)
         .then(data => {
-
             dispatch({
                 type: DELETE_NEW_TIX_IMAGE,
                 payload: filename

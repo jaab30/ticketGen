@@ -104,7 +104,7 @@ module.exports = {
 
     },
     imageUpload: function (req, res) {
-        console.log(req.file);
+
         if (req.file === undefined) return res.status(404).json({ msg: "Please enter a file" })
         if (req.file.mimetype === "image/jpeg" || req.file.mimetype === "image/png") {
             UserTicket.findByIdAndUpdate(req.body.tixId, { $push: { images: req.file.filename } }, { new: true })
@@ -135,7 +135,6 @@ module.exports = {
             if (err) {
                 return res.status(404).json({ err: err });
             }
-            console.log("GRIDSTAOR", gridStore);
 
             res.json(gridStore)
         })

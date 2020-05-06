@@ -93,7 +93,9 @@ export default function (state = initialState, action) {
                 allTickets: [],
                 userTickets: [],
                 currentTicket: {},
-                isPostSuccess: false
+                currentImage: [],
+                isPostSuccess: false,
+                isLoading: true
             }
         default:
             return state;

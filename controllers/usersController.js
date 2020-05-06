@@ -133,7 +133,6 @@ module.exports = {
     updateUser: function (req, res) {
 
         const { firstName, lastName, address, address2, city, state, zip, phoneNumber } = req.body;
-        console.log(zip);
 
         if (!firstName || !lastName || !address || !city || !state || !zip || !phoneNumber) {
             return res.status(400).json({ msg: "Please enter all fields" })
@@ -164,8 +163,6 @@ module.exports = {
                     image: req.file.filename
                 }, { new: true })
                 .then(data => {
-                    console.log(data);
-
                     res.json(data)
                 })
                 .catch(err => console.log(err));

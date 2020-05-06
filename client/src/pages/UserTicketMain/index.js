@@ -141,7 +141,8 @@ function TicketMain() {
                         <P className="mt-1">Images:</P>
                         <ImageLoader
                             _id={""}
-                            images={currentImage}
+                            images={[]}
+                            currentImages={currentImage}
                             isLoading={isLoading}
                             error={error}
                             addImageAction={addImageNewTix}
