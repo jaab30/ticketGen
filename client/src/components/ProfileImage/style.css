@@ -8,3 +8,22 @@
     background-position: 50% 50%;
     background-size: 30px;
   }
+
+  .profileImg {
+    width:220px;
+    height: 200px;
+
+  }
+
+  .profileText {
+    margin: 10px 0 5px;
+    font-size: .8em;
+    color: gray;
+    font-style: italic;
+  }
+
+  .userIcon {
+    width:200px;
+    height: 200px;
+    opacity: .8;
+  }

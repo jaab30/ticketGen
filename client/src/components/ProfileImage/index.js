@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Icon from "../Icon";
 import "./style.css"
+import userIcon from "./images/profile.png";
 import {
     Form,
     FormGroup,
@@ -10,6 +11,7 @@ import {
     Col,
     Alert
 } from 'reactstrap';
+import { P } from "../Tags";
 import { useSelector, useDispatch } from "react-redux";
 import { updateProfileImage, isLoadingProfileImage, deleteProfileImage, clearErrors } from "../../actions/authAction";
 import { UPDATE_PROFILE_IMAGE_ERROR } from "../../actions/actions";
@@ -59,7 +61,8 @@ function ProfileImage() {
         inputImage.childNodes[1].textContent = "Upload your Image"
     }
 
-    const deleteImage = (filename, userId) => {
+    const deleteImage = (e, filename, userId) => {
+        e.target.className = "fas fa-spinner fa-pulse"
         dispatch(deleteProfileImage(filename, userId))
     }
 
@@ -68,10 +71,11 @@ function ProfileImage() {
 
         <React.Fragment>
             <Row>
-                <Col md={12} className="mb-4" style={{ height: "250px" }} >
-                    {image ? isImageLoading ? <Row className="pt-4"><Col className="text-center mt-4 pt-4" md={12}><Icon className="text-center mt-3 fas fa-spinner fa-pulse fa-2x" /></Col></Row> : <div className="loadingProfile"><img className="rounded-circle" width="250px" src={"/api/ticket/image/" + image} /><a className="img-del-btn bg-dark text-white" onClick={() => deleteImage(image, user._id)}><Icon className="fas fa-trash-alt" /></a></div>
+                <Col md={12} >
+                    {image ? isImageLoading ? <Row className="pt-4"><Col className="text-center mt-4 pt-4" md={12}><Icon className="text-center mt-3 fas fa-spinner fa-pulse fa-2x" /></Col></Row> : <div className="loadingProfile"><img className="profileImg rounded-circle" src={"/api/ticket/image/" + image} /><a className="img-del-btn bg-dark text-white" onClick={(e) => deleteImage(e, image, user._id)}><Icon className="fas fa-trash-alt" /></a></div>
                         :
-                        <Icon className="fas fa-user-circle fa-10x" />
+                        // <Icon className="fas fa-user-circle fa-10x" />
+                        <div><img className="userIcon rounded-circle" src={userIcon} /></div>
                     }
 
                 </Col>
@@ -83,6 +87,7 @@ function ProfileImage() {
                         <Row className="justify-content-center">
                             <Col md={8}>
                                 {msgImage ? <Alert color="danger">{msgImage}</Alert> : null}
+                                <P className="profileText">Recomended size: 250px x 250px</P>
                                 <FormGroup>
                                     <CustomInput
                                         className="profile-input"
