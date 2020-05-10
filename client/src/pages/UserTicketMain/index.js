@@ -101,17 +101,17 @@ function TicketMain() {
         <React.Fragment>
             <MainNav />
             <Container>
-                <Row className="logForm mt-4 mb-4">
+                <Row className="logForm mt-4">
                     <Col className="p-0" md={12}>
-                        <Form className="mt-4 pl-4 pr-4 pb-0 pt-4 text-dark">
-                            <h2 className="display-4 text-dark text-center">Request Service Ticket</h2>
+                        <Form className="pl-4 pr-4 pb-0 text-dark">
+                            <h2 className="display-4 text-dark text-center" style={{ fontSize: "2.8em" }}>Request Service Ticket</h2>
                             {msg ? <Alert color="danger">{msg}</Alert> : null}
                             <Row form>
-                                <Col md={6}><P className="mt-4"><Moment format="MMMM Do, YYYY">{dateToFormat}</Moment></P></Col>
-                                <Col md={6}><P className="mt-4 text-right">Ticket ID: {tixId}</P></Col>
+                                <Col md={6}><P className="mt-1"><Moment format="MMMM Do, YYYY">{dateToFormat}</Moment></P></Col>
+                                <Col md={6}><P className="mt-1 text-right">Ticket ID: {tixId}</P></Col>
                                 <Col md={12}>
-                                    <FormGroup>
-                                        <Label for="ticketSubject">Subject</Label>
+                                    <FormGroup className="mb-1">
+                                        <Label for="ticketSubject"><strong>Subject</strong></Label>
                                         <Input
                                             type="text"
                                             name="subject"
@@ -122,8 +122,8 @@ function TicketMain() {
                                     </FormGroup>
                                 </Col>
                                 <Col md={12}>
-                                    <FormGroup>
-                                        <Label for="ticketDescription">Description</Label>
+                                    <FormGroup className="mb-1">
+                                        <Label for="ticketDescription"><strong>Description</strong></Label>
                                         <Input
                                             type="textarea"
                                             name="description"
@@ -138,7 +138,7 @@ function TicketMain() {
                         </Form>
                     </Col>
                     <Col className="pl-4 pr-4 pt-0" md={12}>
-                        <P className="mt-1">Images:</P>
+                        <P className="mb-1"><strong>Images:</strong></P>
                         <ImageLoader
                             _id={""}
                             images={[]}
@@ -150,8 +150,8 @@ function TicketMain() {
                         />
                     </Col>
 
-                    <Col className="p-4" md={12}>
-                        <Button className="mt-1 mb-4 ml-1" onClick={handleTicketForm} color="dark">Submit Ticket</Button>
+                    <Col className="pl-4 pt-1 text-center" md={12}>
+                        <Button className="mt-1 mb-2" onClick={handleTicketForm} color="dark">Submit Ticket</Button>
                     </Col>
                 </Row>
 

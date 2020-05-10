@@ -36,11 +36,11 @@ function Contact() {
             <MainNav />
             <Container>
                 <Row className="mt-4 mb-4">
-                    <Col md={12} className="mb-4 text-center">
+                    {/* <Col md={12} className="mb-4 text-center">
                         <Col className="text-dark nav-text" href="/"><Icon className="fas fa-clipboard-list text-dark fa-2x mr-3 ml-3 contactTitle"></Icon><span className="contactTitle">Ticket Generator</span></Col>
 
-                    </Col>
-                    <Col md={6}>
+                    </Col> */}
+                    <Col className="mt-4" md={6}>
                         <Row className="text-center pb-4">
                             <Col md={12} className="mt-4">
                                 <span><Icon className="far fa-envelope fa-3x" /></span>
@@ -57,7 +57,7 @@ function Contact() {
 
                         </Row>
                     </Col>
-                    <Col className="p-0" md={6}>
+                    <Col className="p-0 mt-4" md={6}>
                         <Row className="logForm">
                             <Col md={12}>
                                 <Form className="mt-4 pl-4 pr-4 pb-0 pt-4 text-dark">

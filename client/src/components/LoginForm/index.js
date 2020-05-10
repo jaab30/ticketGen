@@ -48,43 +48,42 @@ function Login() {
             <P className="lead loginHeadText text-center text-dark">Login</P>
             <Row className="mx-auto">
                 <Col md={4} className="mx-auto">
-                    {msg ? <Alert color="danger">{msg}</Alert> : null}
                     <Form className="logForm bg-white p-4 text-dark">
                         <FormGroup>
-                            <Label for="exampleEmail">Email</Label>
+                            <Label for="loginEmail">Email</Label>
                             <Input
                                 type="email"
                                 name="email"
-                                id="exampleEmail"
+                                id="loginEmail"
                                 placeholder="Please enter Email"
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="examplePassword">Password</Label>
+                            <Label for="loginPassword">Password</Label>
                             <Input
                                 type="password"
                                 name="password"
-                                id="examplePassword"
+                                id="loginPassword"
                                 placeholder="Please enter Password"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="exampleSelect">Select</Label>
+                            <Label for="loginRoleSelect">Select</Label>
                             <Input
                                 defaultValue={"Default"}
                                 type="select"
                                 name="select"
-                                id="exampleSelect"
+                                id="loginRoleSelect"
                                 onChange={(e) => setRole(e.target.value)}
                             >
                                 <option value="Default" disabled>Please select:</option>
                                 <option value="resident">Resident</option>
-                                <option value="manager">Manager</option>
                                 <option value="administrator">Administrator</option>
                             </Input>
                         </FormGroup>
+                        {msg ? <Alert color="danger">{msg}</Alert> : null}
                         <Button onClick={handleFormSubmit} color="dark" size="lg" block>LogIn</Button>
                     </Form>
                 </Col>

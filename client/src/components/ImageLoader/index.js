@@ -45,7 +45,7 @@ function ImageLoader(props) {
         setMsgImage(null)
         const inputImage = document.querySelector(".file-input");
         inputImage.childNodes[1].textContent = "Upload your Image"
-
+        setImage("");
     }
 
     const removeImage = (img) => {
@@ -61,7 +61,7 @@ function ImageLoader(props) {
                     {msgImage ? <Alert color="danger">{msgImage}</Alert> : null}
                     <Row>
                         <Col className="p-0" md={4}>
-                            <FormGroup>
+                            <FormGroup className="mb-2">
                                 <CustomInput
                                     className="file-input"
                                     type="file"

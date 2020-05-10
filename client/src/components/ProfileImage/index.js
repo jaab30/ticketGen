@@ -72,9 +72,10 @@ function ProfileImage() {
         <React.Fragment>
             <Row>
                 <Col md={12} >
-                    {image ? isImageLoading ? <Row className="pt-4"><Col className="text-center mt-4 pt-4" md={12}><Icon className="text-center mt-3 fas fa-spinner fa-pulse fa-2x" /></Col></Row> : <div className="loadingProfile"><img className="profileImg rounded-circle" src={"/api/ticket/image/" + image} /><a className="img-del-btn bg-dark text-white" onClick={(e) => deleteImage(e, image, user._id)}><Icon className="fas fa-trash-alt" /></a></div>
+                    {image ? isImageLoading ? <div className="loadingPulse"><Icon className="text-center mt-3 fas fa-spinner fa-pulse fa-2x" /></div>
                         :
-                        // <Icon className="fas fa-user-circle fa-10x" />
+                        <div className="loadingBack"><img className="profileImg rounded-circle" src={"/api/ticket/image/" + image} /><a className="img-del-btn bg-dark text-white" onClick={(e) => deleteImage(e, image, user._id)}><Icon className="fas fa-trash-alt" /></a></div>
+                        :
                         <div><img className="userIcon rounded-circle" src={userIcon} /></div>
                     }
 
@@ -86,7 +87,7 @@ function ProfileImage() {
 
                         <Row className="justify-content-center">
                             <Col md={8}>
-                                {msgImage ? <Alert color="danger">{msgImage}</Alert> : null}
+                                {msgImage ? <Alert className="mt-2" color="danger">{msgImage}</Alert> : null}
                                 <P className="profileText">Recomended size: 250px x 250px</P>
                                 <FormGroup>
                                     <CustomInput
