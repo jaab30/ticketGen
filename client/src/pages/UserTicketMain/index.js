@@ -27,6 +27,7 @@ import {
     imageDeleteNewTix
 } from "../../actions/ticketAction";
 import { clearErrors } from "../../actions/authAction";
+import "./style.css";
 
 
 
@@ -108,7 +109,7 @@ function TicketMain() {
                             {msg ? <Alert color="danger">{msg}</Alert> : null}
                             <Row form>
                                 <Col md={6}><P className="mt-1"><Moment format="MMMM Do, YYYY">{dateToFormat}</Moment></P></Col>
-                                <Col md={6}><P className="mt-1 text-right">Ticket ID: {tixId}</P></Col>
+                                <Col md={6}><P className="mt-1 tixid-text">Ticket ID: {tixId}</P></Col>
                                 <Col md={12}>
                                     <FormGroup className="mb-1">
                                         <Label for="ticketSubject"><strong>Subject</strong></Label>

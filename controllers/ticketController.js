@@ -1,6 +1,6 @@
 const UserTicket = require("../models/UserTicket");
+const User = require("../models/User");
 const mongoose = require("mongoose");
-const User = require("../models/user");
 const Grid = require("gridfs-stream");
 let gfs;
 

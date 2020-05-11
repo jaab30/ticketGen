@@ -40,6 +40,11 @@ export default function (state = initialState, action) {
                 ...state,
                 isPostSuccess: true
             }
+        case POST_SUCCESS:
+            return {
+                ...state,
+                isPostSuccess: false
+            }
         case CURRENT_TICKET:
             state.currentTicket = {};
             const chosen = state.userTickets.filter(ticket => ticket._id === action.payload);
@@ -82,11 +87,6 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isLoading: action.payload
-            }
-        case POST_SUCCESS:
-            return {
-                ...state,
-                isPostSuccess: false
             }
         case CLEAR_TICKETS:
             return {

@@ -46,7 +46,7 @@ function UserTicketList() {
                     <Col md={12} className="mb-4">
                         <H1 className="display-4 text-center mt-4 mb-1" style={{ fontSize: "2.8em" }}>Tickets</H1>
                     </Col>
-                    <Col md={10}>
+                    <Col sm={12} md={12} lg={12}>
                         {tickets.length === 0 ?
                             <Col>
                                 <P className="text-center" style={{ fontSize: "1.2em" }}>You haven't submitted any tickets yet.</P>

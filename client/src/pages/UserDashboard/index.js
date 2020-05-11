@@ -65,13 +65,13 @@ function UserDashboard() {
                             <Row>
                                 <Col md={12}> <H1 className="display-5 mb-4 mt-1 text-center text-dark">Profile Info</H1></Col>
                                 <Col md={12}> <P className="bk-white"><strong>email:</strong> {email}</P></Col>
-                                <Col md={6} className="pr-2"> <P><strong>First Name:</strong> {firstName}</P></Col>
-                                <Col md={6} className="pl-0"> <P><strong>Last Name:</strong> {lastName}</P></Col>
+                                <Col md={6}> <P><strong>First Name:</strong> {firstName}</P></Col>
+                                <Col md={6}> <P><strong>Last Name:</strong> {lastName}</P></Col>
                                 <Col md={12}> <P><strong>Address:</strong> {address}</P></Col>
                                 <Col md={12}> <P><strong>Apt, Suite, Unit:</strong> {address2}</P></Col>
-                                <Col md={4} className="pr-2"> <P><strong>City:</strong> {city}</P></Col>
-                                <Col md={4} className="pr-2 pl-0">  <P><strong>State:</strong> {state}</P></Col>
-                                <Col md={4} className="pl-0"> <P><strong>Zip:</strong> {zip}</P></Col>
+                                <Col md={4}> <P><strong>City:</strong> {city}</P></Col>
+                                <Col md={4}>  <P><strong>State:</strong> {state}</P></Col>
+                                <Col md={4}> <P><strong>Zip:</strong> {zip}</P></Col>
                                 <Col md={6}> <P><strong>Phone#:</strong> {formatPhone(phoneNumber)} </P></Col>
                             </Row>
                         </Col>

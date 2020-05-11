@@ -80,7 +80,7 @@ export default function UpdateUserForm(props) {
                         </Col>
                         <Col md={12}> <P className="bk-white"><strong>email:</strong> {user.email}</P>
                         </Col>
-                        <Col md={6} className="pr-2"> <P><strong>First Name:</strong></P>
+                        <Col md={6} className=""> <P><strong>First Name:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -93,7 +93,7 @@ export default function UpdateUserForm(props) {
                             </FormGroup>
                         </Col>
 
-                        <Col md={6} className="pl-0"> <P><strong>Last Name:</strong></P>
+                        <Col md={6} className=""> <P><strong>Last Name:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -129,7 +129,7 @@ export default function UpdateUserForm(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={4} className="pr-2"> <P><strong>City:</strong></P>
+                        <Col md={4} className=""> <P><strong>City:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -141,7 +141,7 @@ export default function UpdateUserForm(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={4} className="pr-2 pl-0">  <P><strong>State:</strong></P>
+                        <Col md={4} className="">  <P><strong>State:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -153,7 +153,7 @@ export default function UpdateUserForm(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={4} className="pl-0"> <P><strong>Zip:</strong></P>
+                        <Col md={4} className=""> <P><strong>Zip:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"

@@ -162,11 +162,8 @@ function RegisterForm() {
                                         onChange={(e) => setStateReg(e.target.value)}
                                     >
                                         <option value="Default" disabled>State</option>
-                                        {stateArr.map(state => (
-                                            <>
-                                                <option value={state}>{state}</option>
-                                            </>
-
+                                        {stateArr.map((state, i) => (
+                                            <option key={i} value={state}>{state}</option>
                                         ))}
 
                                     </Input>

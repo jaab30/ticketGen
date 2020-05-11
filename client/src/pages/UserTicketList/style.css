@@ -15,3 +15,14 @@ tr:hover {
 /* td {
     padding: 20px;
 } */
+
+@media screen and (max-width: 767px) {
+    th, td {
+        font-size: .8em;
+    }
+  }
+@media screen and (max-width: 425px) {
+    th, td {
+        font-size: .6em;
+    }
+  }

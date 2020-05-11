@@ -1,0 +1,11 @@
+
+p.tixid-text {
+    text-align: right;
+}
+
+
+@media screen and (max-width: 767px) {
+    p.tixid-text{
+        text-align: left;
+    }
+  }
