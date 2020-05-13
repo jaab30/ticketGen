@@ -14,17 +14,13 @@ import {
 } from "reactstrap";
 import { MESSAGE_ERROR } from "../../actions/actions";
 import { clearErrors } from "../../actions/authAction";
-import { useHistory, Link } from "react-router-dom";
-import { H1, P } from "../../components/Tags";
+import { useHistory } from "react-router-dom";
+import { P } from "../../components/Tags";
 import MainNav from "../../components/MainNav";
 import Icon from "../../components/Icon";
 import "./style.css";
 
-
-
-
 function Contact() {
-
 
     const user = useSelector(state => state.authReducer.user)
     const { isPostMessageSuccess } = useSelector(state => state.messageReducer)
@@ -47,13 +43,13 @@ function Contact() {
             dispatch(postMessageSuccess())
         }
 
-    }, [error])
+    }, [error, dispatch])
 
     const handleForm = (e) => {
+        e.preventDefault()
         setSuccessMessage(true)
         setMsg(null)
-        e.preventDefault()
-        // e.target.classList.add("spinner-grow spinner-grow-sm")
+
         const messageObj = {
             userId: user._id,
             subject: messageSubject,
@@ -61,7 +57,6 @@ function Contact() {
         }
 
         dispatch(postMessages(messageObj));
-
         setMessageSubject("");
         setMessageDescription("");
 
@@ -76,10 +71,6 @@ function Contact() {
             <MainNav />
             <Container>
                 <Row className="mt-4 mb-4">
-                    {/* <Col md={12} className="mb-4 text-center">
-                        <Col className="text-dark nav-text" href="/"><Icon className="fas fa-clipboard-list text-dark fa-2x mr-3 ml-3 contactTitle"></Icon><span className="contactTitle">Ticket Generator</span></Col>
-
-                    </Col> */}
                     <Col className="contactInfo" md={5}>
                         <Row className="text-center pb-4">
                             <Col md={12} className="mt-4">
@@ -94,7 +85,6 @@ function Contact() {
                                 <span><Icon className="fas fa-street-view fa-3x"></Icon></span>
                                 <P className="contactText">PO Box 987654, Orlando - FL 32801</P>
                             </Col>
-
                         </Row>
                     </Col>
                     <Col className="p-0 mt-4" md={6}>
@@ -143,12 +133,10 @@ function Contact() {
                                                     <Alert color="success">Message Submitted..!</Alert>
                                                     <Button onClick={handleForm} className="mt-1 mb-4" color="dark" size="lg" block>Submit Ticket</Button>
                                                 </> : <Button onClick={handleForm} className="mt-1 mb-4" color="dark" size="lg" block>{successMessage ? <Icon className="fas fa-spinner fa-pulse" /> : "Submit Message"}</Button>}
-
                                     </Col>
                                 </Form>
                             </Col>
                         </Row>
-
                     </Col>
 
 

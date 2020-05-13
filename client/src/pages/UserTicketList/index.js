@@ -19,7 +19,7 @@ function UserTicketList() {
 
     useEffect(() => {
         dispatch(loadUserTickets());
-    }, [])
+    })
 
     const statusIcon = (index) => {
 
@@ -27,8 +27,10 @@ function UserTicketList() {
             return `fas fa-file-import fa-1x ml-2 text-primary`
         } else if (tickets[index].status === "In Progress") {
             return `fas fa-spinner fa-1x ml-2 text-warning`
+        } else if (tickets[index].status === "Completed") {
+            return `fas fa-check fa-1x ml-2 text-success`
         } else {
-            return `test`
+            return ``
         }
     }
     const showTicket = (id) => {

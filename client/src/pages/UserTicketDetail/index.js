@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import Moment from "react-moment";
-import { Container, Row, Col, Form, FormGroup, Label, Input, CustomInput, Button, Alert } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
 import { H1, P } from "../../components/Tags";
 import MainNav from "../../components/MainNav";
 import ImageLoader from "../../components/ImageLoader";
@@ -41,7 +41,7 @@ function UserTicketDetail(props) {
             dispatch(clearErrors());
             dispatch(postSuccess());
         }
-    }, [error, isPostSuccess])
+    }, [error, isPostSuccess, dispatch])
 
 
     const handleCommentsForm = (e) => {
@@ -65,8 +65,10 @@ function UserTicketDetail(props) {
             return `fas fa-file-import fa-1x ml-2 mr-2 text-primary`
         } else if (status === "In Progress") {
             return `fas fa-spinner fa-1x ml-2 mr-2 text-warning`
+        } else if (status === "Completed") {
+            return `fas fa-check fa-1x ml-2 mr-2 text-success`
         } else {
-            return `test`
+            return ``
         }
     }
 
@@ -135,7 +137,6 @@ function UserTicketDetail(props) {
                                 addImageAction={addImage}
                             />
                         </Col>
-
                         <Col className="p-0 mt-3" md={12}>
                             <Form className="logForm text-dark">
                                 {msgComment ? <Alert color="danger">{msgComment}</Alert> : null}

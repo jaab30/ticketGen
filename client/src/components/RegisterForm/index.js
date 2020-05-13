@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
+import {
+    Container,
+    Row,
+    Col,
+    Button,
+    Form,
+    FormGroup,
+    Label,
+    Input,
+    Alert
+} from 'reactstrap';
 import { P } from "../Tags";
+import Icon from "../Icon";
 import { useSelector, useDispatch } from "react-redux";
 import { register, clearErrors } from "../../actions/authAction";
 
@@ -28,10 +39,12 @@ function RegisterForm() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [msg, setMsg] = useState(null);
     const [stateArr] = useState(['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'])
+    const [spinner, setSpinner] = useState("Register")
 
     useEffect(() => {
         if (error.id === "REGISTER_FAIL") {
             setMsg(error.msg.msg)
+            setSpinner("Register")
         } else {
             setMsg(null)
         }
@@ -44,7 +57,7 @@ function RegisterForm() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-
+        setSpinner(<Icon className="fas fa-spinner fa-pulse" />)
         const dataObj = {
             firstName,
             lastName,
@@ -220,7 +233,7 @@ function RegisterForm() {
                             </Col>
                         </Row>
                         {msg ? <Alert color="danger">{msg}</Alert> : null}
-                        <Button onClick={handleFormSubmit} color="dark" size="lg" block>Register</Button>
+                        <Button onClick={handleFormSubmit} color="dark" size="lg" block>{spinner}</Button>
                     </Form>
                 </Col>
             </Row>

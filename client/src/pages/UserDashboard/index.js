@@ -15,23 +15,16 @@ import { loadUserTickets } from "../../actions/ticketAction";
 import Icon from "../../components/Icon";
 import "./style.css";
 
-
-
-
 function UserDashboard() {
 
-
     const user = useSelector(state => state.authReducer)
-    const tickets = useSelector(state => state.ticketReducer.userTickets)
     const dispatch = useDispatch()
     const { firstName, lastName, email, address, address2, city, state, zip, phoneNumber } = user.user
-
     const [isUpdateForm, setIsUpdateForm] = useState(false);
-
 
     useEffect(() => {
         dispatch(loadUserTickets());
-    }, [])
+    })
 
     const formatPhone = (phoneNumberString) => {
         const cleaned = ('' + phoneNumberString).replace(/\D/g, '')
@@ -46,7 +39,6 @@ function UserDashboard() {
         setIsUpdateForm(!isUpdateForm);
     }
 
-
     return (
         <React.Fragment>
             <MainNav />
@@ -54,7 +46,6 @@ function UserDashboard() {
                 <Row>
                     <Col md={6} className="text-center">
                         <H1 className="display-4 mb-4 mt-3 text-center text-dark">Hello {firstName}!</H1>
-
                         <ProfileImage />
                     </Col>
                     {isUpdateForm ?

@@ -15,7 +15,7 @@ import MainNav from "../../components/MainNav";
 import ImageLoader from "../../components/ImageLoader";
 import Moment from "react-moment";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Icon from "../../components/Icon";
 import { POST_ERROR } from "../../actions/actions";
 import {
@@ -28,8 +28,6 @@ import {
 } from "../../actions/ticketAction";
 import { clearErrors } from "../../actions/authAction";
 import "./style.css";
-
-
 
 function TicketMain() {
 
@@ -46,6 +44,7 @@ function TicketMain() {
     const [status] = useState("Submitted");
     const [msg, setMsg] = useState(null);
 
+    const [spinner, setSpinner] = useState("Submit Ticket")
 
     useEffect(() => {
 
@@ -54,6 +53,7 @@ function TicketMain() {
 
         if (error.id === POST_ERROR) {
             setMsg(error.msg.msg)
+            setSpinner("Submit Ticket")
             dispatch(clearErrors());
         }
 
@@ -64,10 +64,11 @@ function TicketMain() {
             dispatch(postSuccess());
         }
 
-    }, [error, isPostSuccess, currentImage])
+    }, [error, isPostSuccess, currentImage, history, dispatch])
 
     const handleTicketForm = (e) => {
         e.preventDefault();
+        setSpinner(<Icon className="fas fa-spinner fa-pulse" />)
 
         const dataObj = {
             userId: user._id,
@@ -152,7 +153,7 @@ function TicketMain() {
                     </Col>
 
                     <Col className="pl-4 pt-1 text-center" md={12}>
-                        <Button className="mt-1 mb-2" onClick={handleTicketForm} color="dark">Submit Ticket</Button>
+                        <Button className="mt-1 mb-2" onClick={handleTicketForm} color="dark">{spinner}</Button>
                     </Col>
                 </Row>
 
@@ -161,7 +162,6 @@ function TicketMain() {
                         <Icon className="back-btn far fa-arrow-alt-circle-left fa-2x mt-3 ml-3 text-primary" onClick={history.goBack} />
                     </Col>
                 </Row>
-
             </Container>
         </React.Fragment >
 

@@ -14,5 +14,5 @@ export function Span(props) {
 };
 
 export function Img(props) {
-    return <img {...props} />
+    return <img alt={props.alt} {...props} />
 }

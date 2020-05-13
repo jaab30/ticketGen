@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import "./style.css";
 import { Row, Col, Form, FormGroup, CustomInput, Button, Alert } from 'reactstrap';
-import { P } from "../Tags";
-import { useDispatch } from "react-redux";
-import { addImage, isLoadingImage } from "../../actions/ticketAction";
+import { Img } from "../Tags";
+import Modal from "../Modal";
+import { isLoadingImage } from "../../actions/ticketAction";
 import { clearErrors } from "../../actions/authAction";
 import { IMAGE_ERROR } from "../../actions/actions";
 
@@ -26,7 +27,7 @@ function ImageLoader(props) {
             dispatch(clearErrors());
         }
 
-    }, [props.error])
+    }, [props.error, dispatch])
 
     const handleImageForm = (e) => {
         e.preventDefault();
@@ -80,9 +81,9 @@ function ImageLoader(props) {
             </Col>
             <Col md={12} className="detail-box-wrapper">
                 {props.isLoading ? <Row><Col className="text-center" md={12}><Icon className="text-center mt-3 fas fa-spinner fa-pulse fa-3x" /></Col></Row> : props.images.length !== 0 ? props.images.map((img, i) => {
-                    return <div key={i} className="loading"><img className="tixImages" src={"/api/ticket/image/" + img} alt="Ticket Images" width="100%" /></div>
+                    return <div key={i} className="loading"><Modal imgSrc={"/api/ticket/image/" + img}><Img className="tixImages" src={"/api/ticket/image/" + img} alt="Ticket Images" width="100%" /></Modal></div>
                 }) : props.currentImages.map((img, i) => {
-                    return <div key={i} className="loading"><img className="tixImages" src={"/api/ticket/image/" + img} alt="Ticket Images" width="100%" /><a className="img-del-btn bg-dark text-white" onClick={() => removeImage(img)}><Icon data-id={i} className="fas fa-trash-alt" /></a></div>
+                    return <div key={i} className="loading"><Modal imgSrc={"/api/ticket/image/" + img}><Img className="tixImages" src={"/api/ticket/image/" + img} alt="Ticket Images" width="100%" /><Button className="img-del-btn bg-dark text-white" onClick={() => removeImage(img)}><Icon data-id={i} className="fas fa-trash-alt img-icon" /></Button></Modal></div>
                 })}
             </Col>
 

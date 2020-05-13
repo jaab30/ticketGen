@@ -1,3 +1,37 @@
 a.nav-text {
     font-size: 1.5em;
 }
+
+a.nav-link {
+    text-align: right;
+}
+
+a.nav-brand-text {
+    padding: 10px 0;
+    /* color: red; */
+    margin-right: 20px;
+}
+
+a.nav-brand-text:hover {
+    padding: 10px 0;
+    color: rgba(0,0,0,.5)
+
+}
+
+/* .navbar-light .navbar-text a {
+    color: rgba(0,0,0,.9);
+    color: rgba(0,0,0,.5)
+
+} */
+
+
+@media screen and (max-width: 767px) {
+    a.nav-brand-text {
+        margin-right: 0px;
+        color: rgba(0,0,0,.5);
+    }
+    a.nav-brand-text:hover {
+        color: rgba(0,0,0,.9)
+    
+    }
+  }

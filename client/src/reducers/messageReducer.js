@@ -1,7 +1,6 @@
 import {
     LOAD_MESSAGES,
     POST_MESSAGES,
-    MESSAGE_ERROR,
     POST_MESSAGE_SUCCESS
 } from "../actions/actions";
 

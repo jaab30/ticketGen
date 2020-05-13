@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
+import { Row, Col, Button, Form, FormGroup, Input, Alert } from 'reactstrap';
 import { H1, P } from "../Tags";
 import Icon from "../Icon";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,10 +25,14 @@ export default function UpdateUserForm(props) {
     const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
     const [msg, setMsg] = useState(null);
 
+    const [spinner, setSpinner] = useState("Submit Changes")
+
 
     useEffect(() => {
         if (error.id === UPDATE_ERROR) {
             setMsg(error.msg.msg);
+            setSpinner("Submit Changes")
+
         }
         if (isUpdateSuccess) {
             setMsg(null)
@@ -37,7 +41,7 @@ export default function UpdateUserForm(props) {
             dispatch(updateSuccess());
         }
 
-    }, [error, isUpdateSuccess])
+    }, [error, isUpdateSuccess, props, dispatch])
 
     const formatPhone = (phoneNumberString) => {
         const cleaned = ('' + phoneNumberString).replace(/\D/g, '')
@@ -50,6 +54,7 @@ export default function UpdateUserForm(props) {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        setSpinner(<Icon className="fas fa-spinner fa-pulse" />)
 
         const dataObj = {
             firstName,
@@ -178,7 +183,7 @@ export default function UpdateUserForm(props) {
                             </FormGroup>
                         </Col>
                         <Col md={12}>
-                            <Button onClick={handleFormSubmit} color="dark" size="lg" block>Submit Changes</Button>
+                            <Button onClick={handleFormSubmit} color="dark" size="lg" block>{spinner}</Button>
                         </Col>
                     </Row>
                 </Form>

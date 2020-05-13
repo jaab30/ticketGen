@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login, clearErrors } from "../../actions/authAction";
 import { P } from "../Tags";
+import Icon from "../Icon";
+
 
 
 function Login() {
@@ -16,10 +18,13 @@ function Login() {
     const [password, setPassword] = useState("");
     const [role, setRole] = useState("");
     const [msg, setMsg] = useState(null);
+    const [spinner, setSpinner] = useState("Login")
+
 
     useEffect(() => {
         if (error.id === "LOGIN_FAIL") {
             setMsg(error.msg.msg)
+            setSpinner("Login")
         } else {
             setMsg(null)
         }
@@ -33,7 +38,7 @@ function Login() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-
+        setSpinner(<Icon className="fas fa-spinner fa-pulse" />)
         const dataObj = {
             email,
             password,
@@ -84,7 +89,7 @@ function Login() {
                             </Input>
                         </FormGroup>
                         {msg ? <Alert color="danger">{msg}</Alert> : null}
-                        <Button onClick={handleFormSubmit} color="dark" size="lg" block>LogIn</Button>
+                        <Button onClick={handleFormSubmit} color="dark" size="lg" block>{spinner}</Button>
                     </Form>
                 </Col>
             </Row>

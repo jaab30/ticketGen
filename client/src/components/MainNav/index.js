@@ -5,7 +5,6 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
     NavbarText,
     Collapse
 } from "reactstrap";
@@ -39,8 +38,8 @@ function MainNav() {
                     </NavItem>
                 </Nav>
 
-                <NavbarText><Link className="nav-link" to="/user/dashboard">User Dashboard</Link></NavbarText>
-                <NavbarText><Logout /></NavbarText>
+                <span className="nav-text"><Link className="nav-link nav-brand-text" to="/user/dashboard">User Dashboard</Link></span>
+                <span className="nav-text"><Logout /></span>
             </Collapse>
         </Navbar>
 

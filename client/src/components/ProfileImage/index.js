@@ -11,7 +11,7 @@ import {
     Col,
     Alert
 } from 'reactstrap';
-import { P } from "../Tags";
+import { P, Img } from "../Tags";
 import { useSelector, useDispatch } from "react-redux";
 import { updateProfileImage, isLoadingProfileImage, deleteProfileImage, clearErrors } from "../../actions/authAction";
 import { UPDATE_PROFILE_IMAGE_ERROR } from "../../actions/actions";
@@ -41,7 +41,7 @@ function ProfileImage() {
             dispatch(clearErrors());
         }
 
-    }, [error])
+    }, [error, dispatch])
 
     const handleProfileImageForm = (e) => {
         e.preventDefault();
@@ -74,9 +74,9 @@ function ProfileImage() {
                 <Col md={12} >
                     {image ? isImageLoading ? <div className="loadingPulse"><Icon className="text-center mt-3 fas fa-spinner fa-pulse fa-2x" /></div>
                         :
-                        <div className="loadingBack"><img className="profileImg rounded-circle" src={"/api/ticket/image/" + image} /><a className="img-del-btn bg-dark text-white" onClick={(e) => deleteImage(e, image, user._id)}><Icon className="fas fa-trash-alt" /></a></div>
+                        <div className="loadingBack"><Img className="profileImg rounded-circle" src={"/api/ticket/image/" + image} alt="Profile Headshot" /><Button className="img-del-btn bg-dark text-white" onClick={(e) => deleteImage(e, image, user._id)}><Icon className="fas fa-trash-alt img-icon" /></Button></div>
                         :
-                        <div><img className="userIcon rounded-circle" src={userIcon} /></div>
+                        <div><img alt="Profile Icon" className="userIcon rounded-circle" src={userIcon} /></div>
                     }
 
                 </Col>

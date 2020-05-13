@@ -5,8 +5,6 @@ import LoginForm from "../../components/LoginForm";
 import RegisterForm from "../../components/RegisterForm";
 import "./style.css";
 
-
-
 function Main() {
 
     const [formSwitch, setFormSwitch] = useState(false);
@@ -36,9 +34,6 @@ function Main() {
             }
         </React.Fragment>
     )
-
-
 }
-
 
 export default Main;

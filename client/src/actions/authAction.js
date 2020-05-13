@@ -7,20 +7,30 @@ import {
     UPDATE_PROFILE_IMAGE,
     UPDATE_PROFILE_IMAGE_ERROR,
     PROFILE_IMAGE_LOADING,
-    DELETE_PROFILE_IMAGE
+    DELETE_PROFILE_IMAGE,
+    GET_ERRORS,
+    CLEAR_ERRORS,
+    USER_LOADING,
+    USER_LOADED,
+    AUTH_ERROR,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL,
+    REGISTER_SUCCESS,
+    REGISTER_FAIL,
+    LOGOUT_SUCCESS
 } from "../actions/actions";
 
 // Return errors
 export const returnErrors = (msg, status, id = null) => {
     return {
-        type: "GET_ERRORS",
+        type: GET_ERRORS,
         payload: { msg, status, id }
     };
 };
 // Clear errors
 export const clearErrors = () => {
     return {
-        type: "CLEAR_ERRORS",
+        type: CLEAR_ERRORS,
     };
 };
 
@@ -29,17 +39,17 @@ export const clearErrors = () => {
 export const loadUser = () => (dispatch, getState) => {
 
     //User loading
-    dispatch({ type: "USER_LOADING" });
+    dispatch({ type: USER_LOADING });
 
     axios.get("/api/users/user", tokenConfig(getState))
         .then(data => dispatch({
-            type: "USER_LOADED",
+            type: USER_LOADED,
             payload: data.data
         }))
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status));
             dispatch({
-                type: "AUTH_ERROR"
+                type: AUTH_ERROR
             })
         })
 
@@ -59,13 +69,13 @@ export const login = ({ email, password, role }) => dispatch => {
 
     axios.post("/api/users/auth", body, config)
         .then(res => dispatch({
-            type: "LOGIN_SUCCESS",
+            type: LOGIN_SUCCESS,
             payload: res.data
         }))
         .catch(err => {
-            dispatch(returnErrors(err.response.data, err.response.status, "LOGIN_FAIL"));
+            dispatch(returnErrors(err.response.data, err.response.status, LOGIN_FAIL));
             dispatch({
-                type: "LOGIN_FAIL",
+                type: LOGIN_FAIL,
 
             })
         })
@@ -83,13 +93,13 @@ export const register = ({ firstName, lastName, email, address, address2, city, 
 
     axios.post("/api/users/register", body, config)
         .then(res => dispatch({
-            type: "REGISTER_SUCCESS",
+            type: REGISTER_SUCCESS,
             payload: res.data
         }))
         .catch(err => {
-            dispatch(returnErrors(err.response.data, err.response.status, "REGISTER_FAIL"));
+            dispatch(returnErrors(err.response.data, err.response.status, REGISTER_FAIL));
             dispatch({
-                type: "REGISTER_FAIL",
+                type: REGISTER_FAIL,
 
             })
         })
@@ -97,7 +107,7 @@ export const register = ({ firstName, lastName, email, address, address2, city, 
 
 export const logout = () => {
     return {
-        type: "LOGOUT_SUCCESS"
+        type: LOGOUT_SUCCESS
     }
 }
 

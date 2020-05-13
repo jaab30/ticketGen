@@ -1,4 +1,8 @@
-import { LOAD_MESSAGES, POST_MESSAGES, POST_MESSAGE_SUCCESS, MESSAGE_ERROR } from "./actions";
+import {
+    POST_MESSAGES,
+    POST_MESSAGE_SUCCESS,
+    MESSAGE_ERROR
+} from "./actions";
 import axios from "axios";
 import { returnErrors } from "./authAction";
 
