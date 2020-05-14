@@ -18,13 +18,6 @@ a.nav-brand-text:hover {
 
 }
 
-/* .navbar-light .navbar-text a {
-    color: rgba(0,0,0,.9);
-    color: rgba(0,0,0,.5)
-
-} */
-
-
 @media screen and (max-width: 767px) {
     a.nav-brand-text {
         margin-right: 0px;

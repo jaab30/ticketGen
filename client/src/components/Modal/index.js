@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Img } from "../Tags";
+import { Img, Span } from "../Tags";
 
 const ModalExample = (props) => {
     const { imgSrc, className } = props;
@@ -11,7 +11,7 @@ const ModalExample = (props) => {
 
     return (
         <div>
-            <a onClick={toggle}>{props.children}</a>
+            <Span onClick={toggle}>{props.children}</Span>
             <Modal isOpen={modal} size={"lg"} toggle={toggle} className={className}>
                 <ModalHeader toggle={toggle}></ModalHeader>
                 <ModalBody>

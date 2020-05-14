@@ -5,12 +5,12 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavbarText,
     Collapse
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import Icon from "../Icon";
 import Logout from "../Logout";
+import { Span } from "../Tags";
 import "./style.css";
 
 
@@ -38,13 +38,10 @@ function MainNav() {
                     </NavItem>
                 </Nav>
 
-                <span className="nav-text"><Link className="nav-link nav-brand-text" to="/user/dashboard">User Dashboard</Link></span>
-                <span className="nav-text"><Logout /></span>
+                <Span className="nav-text"><Link className="nav-link nav-brand-text" to="/user/dashboard">User Dashboard</Link></Span>
+                <Span className="nav-text"><Logout /></Span>
             </Collapse>
         </Navbar>
-
-
-
     )
 }
 
