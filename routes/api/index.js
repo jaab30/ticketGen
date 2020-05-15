@@ -1,6 +1,6 @@
 const router = require("express").Router();
 // import controllers
-const controller = require("../../controllers/ticketController");
+// const controller = require("../../controllers/ticketController");
 const messageController = require("../../controllers/messageController");
 // import upload middleware
 const upload = require("../../middleware/upload");
