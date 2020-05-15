@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const config = require("config");
-const methodOverride = require("method-override");
+const config = require("config");
 
 const app = express();
 
@@ -10,11 +9,8 @@ const routes = require("./routes");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(methodOverride("_method"));
-
 //mongo database
-// const db = config.get("mongo_URI");
-const db = "mongodb+srv://jaab30:jaab30@ticketgen-6bfeu.mongodb.net/tixgen?retryWrites=true&w=majority";
+const db = config.get("mongo_URI");
 // connet to mongo
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then(() => console.log(`MongoDB Connected`))

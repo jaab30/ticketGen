@@ -1,11 +1,10 @@
-// const config = require("config");
+const config = require("config");
 const crypto = require("crypto");
 const multer = require("multer");
 const GridFsStorage = require("multer-gridfs-storage");
 const path = require("path");
 
-// const db = config.get("mongo_URI");
-const db = "mongodb+srv://jaab30:jaab30@ticketgen-6bfeu.mongodb.net/tixgen?retryWrites=true&w=majority";
+const db = config.get("mongo_URI");
 
 const storage = new GridFsStorage({
 
