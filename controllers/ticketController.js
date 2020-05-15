@@ -1,4 +1,4 @@
-const UserTicket = require("../models/userTicket");
+const UserTicket = require("../models/usertix");
 const User = require("../models/user");
 const mongoose = require("mongoose");
 const Grid = require("gridfs-stream");
