@@ -20,7 +20,7 @@ function Logout(props) {
     return (
         <React.Fragment>
             {/* <NavLink onClick={handleClick} href="#" {...props}>Logout</NavLink> */}
-            <Link className="nav-link nav-brand-text" onClick={handleClick} href="#" {...props}>Logout</Link>
+            <Link className="nav-link nav-brand-text" onClick={handleClick} to="#" {...props}>Logout</Link>
         </React.Fragment>
     )
 }
