@@ -9,6 +9,11 @@ const routes = require("./routes");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+/* Serve up static assets (usually on heroku) */
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, './client/build')));
+};
+
 //mongo database
 const db = config.MONGO_URI;
 // connet to mongo
