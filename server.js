@@ -4,7 +4,7 @@ const config = require("./config/config");
 const path = require("path");
 
 const app = express();
-
+const PORT = process.env.PORT || 3001;
 const routes = require("./routes");
 
 app.use(express.json());
@@ -22,9 +22,6 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreat
     .then(() => console.log(`MongoDB Connected`))
     .catch(err => console.log(err));
 
-const PORT = process.env.PORT || 8000;
-
 app.use(routes);
-
 
 app.listen(PORT, () => console.log(`Server running on Port ${PORT}`));
