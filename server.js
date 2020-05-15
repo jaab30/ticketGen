@@ -4,7 +4,8 @@ const config = require("./config/config");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+
+
 const routes = require("./routes");
 
 app.use(express.json());
@@ -23,5 +24,7 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreat
     .catch(err => console.log(err));
 
 app.use(routes);
+
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => console.log(`Server running on Port ${PORT}`));
