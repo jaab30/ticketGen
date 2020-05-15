@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
-const config = require("config");
+const config = require("../config/config");
 const jwt = require("jsonwebtoken");
 
 
@@ -68,7 +68,7 @@ module.exports = {
                                 const { firstName, lastName, email, address, address2, city, state, zip, phoneNumber, role } = user;
 
                                 jwt.sign(
-                                    { id: user.id }, config.get("jwtSecret"), { expiresIn: 3600 }, (err, token) => {
+                                    { id: user.id }, config.jwtSecret, { expiresIn: 3600 }, (err, token) => {
                                         if (err) throw err
                                         res.json({
                                             token,
@@ -113,7 +113,7 @@ module.exports = {
                         if (!isMatch) return res.status(400).json({ msg: "Password invalid" })
 
                         jwt.sign(
-                            { id: user.id }, config.get("jwtSecret"), { expiresIn: 3600 }, (err, token) => {
+                            { id: user.id }, config.jwtSecret, { expiresIn: 3600 }, (err, token) => {
                                 if (err) throw err
                                 const { firstName, lastName, email, address, address2, city, state, zip, phoneNumber, image } = user;
                                 res.json({

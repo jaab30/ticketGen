@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const config = require("config");
+const config = require("./config/config");
 
 const app = express();
 
@@ -10,9 +10,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //mongo database
-const db = config.get("mongo_URI");
+const db = config.MONGO_URI;
 // connet to mongo
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
     .then(() => console.log(`MongoDB Connected`))
     .catch(err => console.log(err));
 
