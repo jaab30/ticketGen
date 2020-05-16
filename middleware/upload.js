@@ -6,29 +6,30 @@ const path = require("path");
 
 const db = config.MONGO_URI;
 
-const storage = new GridFsStorage({
+// const storage = new GridFsStorage({
 
-    url: db,
-    file: (req, file) => {
+//     url: db,
+//     file: (req, file) => {
 
-        return new Promise((resolve, reject) => {
+//         return new Promise((resolve, reject) => {
 
-            crypto.randomBytes(16, (err, buf) => {
-                if (err) {
-                    return reject(err);
-                }
-                const filename = buf.toString('hex') + path.extname(file.originalname);
-                const fileInfo = {
-                    filename: filename,
-                    bucketName: "uploads"
-                };
+//             crypto.randomBytes(16, (err, buf) => {
+//                 if (err) {
+//                     return reject(err);
+//                 }
+//                 const filename = buf.toString('hex') + path.extname(file.originalname);
+//                 const fileInfo = {
+//                     filename: filename,
+//                     bucketName: "uploads"
+//                 };
 
-                resolve(fileInfo);
-            });
-        });
-    }
-});
+//                 resolve(fileInfo);
+//             });
+//         });
+//     }
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
+const upload = "test";
 
 module.exports = upload;
