@@ -52,7 +52,7 @@ function Login() {
         <Container>
             <P className="lead loginHeadText text-center text-dark">Login</P>
             <Row className="mx-auto">
-                <Col md={4} className="mx-auto">
+                <Col xl={4} md={8} className="mx-auto">
                     <Form className="logForm bg-white p-4 text-dark">
                         <FormGroup>
                             <Label for="loginEmail">Email</Label>

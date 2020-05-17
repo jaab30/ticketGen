@@ -91,7 +91,7 @@ function RegisterForm() {
         <Container>
             <P className="lead loginHeadText text-center text-dark">Register</P>
             <Row className="mx-auto">
-                <Col md={6} className="mx-auto">
+                <Col xl={6} lg={8} md={10} className="mx-auto">
                     <Form className="logForm bg-light p-4 text-dark">
                         <Row form>
                             <Col md={6}>
