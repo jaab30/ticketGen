@@ -7,7 +7,6 @@ const path = require("path");
 const db = config.MONGO_URI;
 
 const storage = new GridFsStorage({
-
     url: db,
     file: (req, file) => {
 
