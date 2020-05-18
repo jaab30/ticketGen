@@ -48,6 +48,7 @@ npm install
 
         #JWT Secret
         JWT_SECRET = "Your JWT Secret"
+        
     4.  Run the following command to start the application: npm run dev
     5.  Enjoy..!
 ``` 
