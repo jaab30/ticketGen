@@ -17,7 +17,7 @@ This application uses JWT to handle Authentication and Redux to handle React sta
 
 ## Web Tools:
 
-Full MERN stack: React, NODEjs, Express, Mongo, Javascript (ES6), Redux, Reactstrap, JWT,
+Full MERN stack: React, Node.js, Express, Mongo, Javascript (ES6), Redux, Reactstrap, JWT.
 
 ## Table of Contents 
 
@@ -32,7 +32,7 @@ Full MERN stack: React, NODEjs, Express, Mongo, Javascript (ES6), Redux, Reactst
 To install necessary dependencies, run the following command:
 
 ```
-npm run dev
+npm install
 ```
 
 ## Usage
@@ -48,8 +48,8 @@ npm run dev
 
         #JWT Secret
         JWT_SECRET = "Your JWT Secret"
-
-    4.  Enjoy..!
+    4.  Run the following command to start the application: npm run dev
+    5.  Enjoy..!
 ``` 
 
 
