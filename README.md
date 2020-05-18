@@ -4,7 +4,7 @@
 ## Online Example & Deployment:
 
 This application was deployed to AWS and Heroku services. Here are the links:
--   AWS: ec2-18-220-148-152.us-east-2.compute.amazonaws.com
+-   AWS: http://ec2-18-220-148-152.us-east-2.compute.amazonaws.com
 -   Heroku: http://tix-generator.herokuapp.com/
 
 ## Description
