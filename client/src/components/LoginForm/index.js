@@ -35,7 +35,6 @@ function Login() {
 
     }, [error, isAuthenticated, dispatch, history])
 
-
     const handleFormSubmit = (e) => {
         e.preventDefault();
         setSpinner(<Icon className="fas fa-spinner fa-pulse" />)
@@ -95,7 +94,6 @@ function Login() {
             </Row>
         </Container>
     )
-
 }
 
 export default Login;

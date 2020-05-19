@@ -8,7 +8,6 @@ import { returnErrors } from "./authAction";
 
 
 export const postMessages = (data) => dispatch => {
-    console.log("action", data);
 
     axios.post("/api/usermessage", data)
         .then(data => {

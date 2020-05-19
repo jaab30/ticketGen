@@ -11,7 +11,7 @@ import MainNav from "../../components/MainNav";
 import ProfileImage from "../../components/ProfileImage";
 import UpdateUserForm from "../../components/UpdateUserForm";
 import { useSelector, useDispatch } from "react-redux";
-import { loadUserTickets } from "../../actions/ticketAction";
+import { loadUserTickets, clearCurrentImages } from "../../actions/ticketAction";
 import Icon from "../../components/Icon";
 import "./style.css";
 
@@ -24,6 +24,7 @@ function UserDashboard() {
 
     useEffect(() => {
         dispatch(loadUserTickets());
+        dispatch(clearCurrentImages());
     })
 
     const formatPhone = (phoneNumberString) => {
@@ -77,11 +78,7 @@ function UserDashboard() {
                 </Row>
             </Container>
         </React.Fragment>
-
-
-
     )
-
 }
 
 export default UserDashboard;

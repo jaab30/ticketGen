@@ -27,7 +27,6 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Main} />
-          {/* <Route exact path="/dashboard" component={UserDashboard} /> */}
           <PrivateRoute exact path="/user/dashboard" component={UserDashboard} />
           <PrivateRoute exact path="/user/ticketrequest" component={UserTicketMain} />
           <PrivateRoute exact path="/user/ticketlist" component={UserTicketList} />

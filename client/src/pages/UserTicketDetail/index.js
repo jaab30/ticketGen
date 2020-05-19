@@ -16,9 +16,11 @@ function UserTicketDetail(props) {
 
     const user = useSelector(state => state.authReducer.user);
     const { currentTicket, isPostSuccess, isLoading } = useSelector(state => state.ticketReducer);
-
     const error = useSelector(state => state.errorReducer);
+
     const { _id, tixId, date, subject, description, status, comments, images } = currentTicket;
+    const { firstName, lastName } = user;
+
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -26,7 +28,6 @@ function UserTicketDetail(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [msgComment, setMsgComment] = useState(null);
 
-    const { firstName, lastName } = user;
 
     useEffect(() => {
 
@@ -170,7 +171,6 @@ function UserTicketDetail(props) {
                 </Row>
             </Container >
         </React.Fragment >
-
     )
 }
 

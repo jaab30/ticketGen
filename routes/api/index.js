@@ -11,6 +11,7 @@ router.post("/tickets", controller.save);
 router.post("/ticket/comment/:id", controller.addComment);
 router.delete("/ticket/:id", controller.delete);
 
+// Routes for showing, creating and deleting images
 router.get("/ticket/files", controller.findFiles);
 router.get("/ticket/file/:filename", controller.findOneFile);
 router.get("/ticket/image/:imagename", controller.findOneImage);

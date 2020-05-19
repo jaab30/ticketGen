@@ -7,12 +7,9 @@ import Modal from "../Modal";
 import { isLoadingImage } from "../../actions/ticketAction";
 import { clearErrors } from "../../actions/authAction";
 import { IMAGE_ERROR } from "../../actions/actions";
-
 import Icon from "../Icon";
 
-
 function ImageLoader(props) {
-
 
     const dispatch = useDispatch();
 
@@ -56,7 +53,6 @@ function ImageLoader(props) {
 
     return (
         <React.Fragment>
-
             <Col md={12}>
                 <Form onSubmit={handleImageForm}>
                     {msgImage ? <Alert color="danger">{msgImage}</Alert> : null}
@@ -86,9 +82,7 @@ function ImageLoader(props) {
                     return <div key={i} className="loading"><Modal imgSrc={"/api/ticket/image/" + img}><Img className="tixImages" src={"/api/ticket/image/" + img} alt="Ticket Images" width="100%" /><Button className="img-del-btn bg-dark text-white" onClick={() => removeImage(img)}><Icon data-id={i} className="fas fa-trash-alt img-icon" /></Button></Modal></div>
                 })}
             </Col>
-
         </React.Fragment>
-
     )
 }
 

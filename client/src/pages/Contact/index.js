@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postMessages, postMessageSuccess } from "../../actions/messageAction";
+import { clearCurrentImages } from "../../actions/ticketAction";
 import {
     Container,
     Row,
@@ -34,6 +35,8 @@ function Contact() {
     const [msg, setMsg] = useState(null);
 
     useEffect(() => {
+        dispatch(clearCurrentImages());
+
         if (error.id === MESSAGE_ERROR) {
             setMsg(error.msg.msg)
             dispatch(clearErrors());
@@ -59,11 +62,7 @@ function Contact() {
         dispatch(postMessages(messageObj));
         setMessageSubject("");
         setMessageDescription("");
-
     }
-
-
-
 
     return (
 
@@ -138,11 +137,7 @@ function Contact() {
                             </Col>
                         </Row>
                     </Col>
-
-
-
                 </Row>
-
                 <Row className="mb-4">
                     <Col md={12} className="text-center">
                         <Icon className="back-btn far fa-arrow-alt-circle-left fa-2x mt-3 ml-3 text-primary" onClick={history.goBack} />
@@ -150,11 +145,7 @@ function Contact() {
                 </Row>
             </Container >
         </React.Fragment >
-
-
-
     )
-
 }
 
 export default Contact;

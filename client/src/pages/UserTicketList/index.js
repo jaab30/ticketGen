@@ -4,7 +4,7 @@ import { Container, Row, Col, Table } from 'reactstrap';
 import { H1, P } from "../../components/Tags";
 import MainNav from "../../components/MainNav";
 import { useSelector, useDispatch } from "react-redux";
-import { loadUserTickets, currentTicket } from "../../actions/ticketAction";
+import { loadUserTickets, currentTicket, clearCurrentImages } from "../../actions/ticketAction";
 import { Link, useHistory } from "react-router-dom";
 import Icon from "../../components/Icon";
 import "./style.css"
@@ -19,6 +19,7 @@ function UserTicketList() {
 
     useEffect(() => {
         dispatch(loadUserTickets());
+        dispatch(clearCurrentImages());
     })
 
     const statusIcon = (index) => {

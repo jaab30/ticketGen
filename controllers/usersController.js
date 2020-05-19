@@ -145,7 +145,7 @@ module.exports = {
             .select("-password")
             .populate("tickets")
             .then(user => res.json(user))
-            .catch(err => console.log(res.status(404).json({ success: false })));
+            .catch(err => console.log(err));
     },
 
     updateUser: function (req, res) {

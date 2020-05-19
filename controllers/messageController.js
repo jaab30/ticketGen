@@ -24,7 +24,6 @@ module.exports = {
             subject,
             description
         })
-        console.log(messageObj);
 
         messageObj.save()
             .then(data => {

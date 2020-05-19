@@ -23,7 +23,6 @@ function RegisterForm() {
     const error = useSelector(state => state.errorReducer);
     const dispatch = useDispatch();
 
-
     const history = useHistory();
 
     const [firstName, setFirstName] = useState("");
@@ -84,7 +83,6 @@ function RegisterForm() {
             return phoneNumberString;
         }
     }
-
 
     return (
 
@@ -240,9 +238,6 @@ function RegisterForm() {
             </Row>
         </Container>
     )
-
-
 }
-
 
 export default RegisterForm;

@@ -96,11 +96,9 @@ module.exports = {
         if (req.file === undefined) return res.status(404).json({ msg: "Please enter a file" })
         if (req.file.mimetype === "image/jpeg" || req.file.mimetype === "image/png") {
             res.json({ file: req.file })
-
         } else {
             return res.status(404).json({ msg: "Not and image" })
         }
-
 
     },
     imageUpload: function (req, res) {

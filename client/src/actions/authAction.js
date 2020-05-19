@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import {
     UPDATE_PROFILE,
@@ -56,7 +55,6 @@ export const loadUser = () => (dispatch, getState) => {
 };
 
 // Register User
-
 export const login = ({ email, password, role }) => dispatch => {
     // headers
     const config = {
@@ -76,7 +74,6 @@ export const login = ({ email, password, role }) => dispatch => {
             dispatch(returnErrors(err.response.data, err.response.status, LOGIN_FAIL));
             dispatch({
                 type: LOGIN_FAIL,
-
             })
         })
 }
@@ -132,7 +129,6 @@ export const tokenConfig = getState => {
 export const updateProfile = (id, data) => (dispatch, getState) => {
     axios.put("/api/users/user/update/" + id, data, tokenConfig(getState))
         .then(data => {
-            console.log(data)
             dispatch({
                 type: UPDATE_PROFILE,
                 payload: data.data
@@ -148,12 +144,10 @@ export const updateProfile = (id, data) => (dispatch, getState) => {
 }
 
 
-export const updateProfileImage = (data, config) => (dispatch, getState) => {
+export const updateProfileImage = (data, config) => (dispatch) => {
 
     axios.post("/api/users/user/image/upload", data, config)
         .then(data => {
-            console.log(data.data);
-
             dispatch({
                 type: UPDATE_PROFILE_IMAGE,
                 payload: data.data.image
@@ -170,13 +164,9 @@ export const isLoadingProfileImage = (status) => {
     }
 }
 export const deleteProfileImage = (filename, userId) => dispatch => {
-    console.log("delete IMG Action", userId);
-    console.log("delete IMG Action");
 
     axios.delete("/api/ticket/image/" + userId + "/" + filename)
         .then(data => {
-            console.log(data);
-
             dispatch({
                 type: DELETE_PROFILE_IMAGE
             })

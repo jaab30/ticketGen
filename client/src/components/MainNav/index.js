@@ -13,12 +13,10 @@ import Logout from "../Logout";
 import { Span } from "../Tags";
 import "./style.css";
 
-
 function MainNav() {
 
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
-
 
     return (
 

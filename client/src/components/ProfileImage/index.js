@@ -17,8 +17,6 @@ import { updateProfileImage, isLoadingProfileImage, deleteProfileImage, clearErr
 import { UPDATE_PROFILE_IMAGE_ERROR } from "../../actions/actions";
 
 
-
-
 function ProfileImage() {
 
     const { user, isImageLoading } = useSelector(state => state.authReducer);
