@@ -7,6 +7,7 @@ const upload = require("../../middleware/upload");
 
 // uses /api/users
 
+router.get("/", auth, UserController.getAllUsers);
 router.post("/register", UserController.register);
 router.post("/auth", UserController.auth);
 router.get("/user", auth, UserController.getUser);

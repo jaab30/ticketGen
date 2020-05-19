@@ -1,0 +1,24 @@
+.profileInfo p {
+    font-size: 1.1em;
+    margin: 5px 0;
+    background-color: white;
+    padding: 3px 3px 3px 8px;
+}
+
+
+a.dash-link {
+    color: red;
+    text-decoration: none;
+}
+a.dash-link:hover {
+    text-decoration: none;
+}
+a.dash-link:hover {
+    text-decoration: none;
+}
+i.dash-icon:hover {
+    color: white;
+}
+i.update-icon:hover {
+    cursor: pointer;
+}

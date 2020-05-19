@@ -9,7 +9,7 @@ import Icon from "../Icon";
 
 
 function Login() {
-    const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated);
+    const { isAuthenticated, user } = useSelector(state => state.authReducer);
     const error = useSelector(state => state.errorReducer);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -28,9 +28,13 @@ function Login() {
         } else {
             setMsg(null)
         }
-        if (isAuthenticated) {
+        if (isAuthenticated && user.role === "resident") {
             dispatch(clearErrors());
             history.push("/user/dashboard");
+        }
+        if (isAuthenticated && user.role === "admin") {
+            dispatch(clearErrors());
+            history.push("/admin/dashboard");
         }
 
     }, [error, isAuthenticated, dispatch, history])
@@ -84,7 +88,7 @@ function Login() {
                             >
                                 <option value="Default" disabled>Please select:</option>
                                 <option value="resident">Resident</option>
-                                <option value="administrator">Administrator</option>
+                                <option value="admin">Administrator</option>
                             </Input>
                         </FormGroup>
                         {msg ? <Alert color="danger">{msg}</Alert> : null}

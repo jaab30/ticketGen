@@ -115,7 +115,7 @@ module.exports = {
                         jwt.sign(
                             { id: user.id }, config.jwtSecret, { expiresIn: 3600 }, (err, token) => {
                                 if (err) throw err
-                                const { firstName, lastName, email, address, address2, city, state, zip, phoneNumber, image } = user;
+                                const { firstName, lastName, email, address, address2, city, state, zip, phoneNumber, image, role } = user;
                                 res.json({
                                     token, user: {
                                         _id: user.id,
@@ -128,7 +128,8 @@ module.exports = {
                                         state,
                                         zip,
                                         phoneNumber,
-                                        image
+                                        image,
+                                        role
                                     }
                                 })
                             }
@@ -139,6 +140,14 @@ module.exports = {
             .catch(err => console.log(err));
     },
 
+    getAllUsers: function (req, res) {
+
+        User.find()
+            .select("-password")
+            .populate("tickets")
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
+    },
     getUser: function (req, res) {
 
         User.findById(req.user.id)

@@ -11,7 +11,8 @@ import {
     LOGIN_FAIL,
     REGISTER_SUCCESS,
     REGISTER_FAIL,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
+    ALL_USERS_LOADED
 } from "../actions/actions";
 
 const initialState = {
@@ -20,7 +21,8 @@ const initialState = {
     isLoading: false,
     isUpdateSuccess: false,
     isImageLoading: true,
-    user: null
+    user: null,
+    allUsers: null
 }
 
 export default function (state = initialState, action) {
@@ -37,6 +39,11 @@ export default function (state = initialState, action) {
                 isAuthenticated: true,
                 isLoading: false,
                 user: action.payload
+            };
+        case ALL_USERS_LOADED:
+            return {
+                ...state,
+                allUsers: action.payload
             };
         //if user.role===admin - admin-token else user-token
         case LOGIN_SUCCESS:

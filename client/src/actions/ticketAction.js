@@ -25,7 +25,7 @@ export const loadAllTickets = () => dispatch => {
         .then(data => {
             dispatch({
                 type: LOAD_TICKETS,
-                payload: data
+                payload: data.data
             })
         })
 }
@@ -52,6 +52,8 @@ export const addTicket = (data) => dispatch => {
             dispatch(returnErrors(err.response.data, err.response.status, POST_ERROR));
         })
 }
+
+
 
 export const postSuccess = () => {
     return {

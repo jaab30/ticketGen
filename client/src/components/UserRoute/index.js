@@ -5,15 +5,15 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function PrivateRoute({ component: Component, ...rest }) {
+function UserRoute({ component: Component, ...rest }) {
 
-    const isAuthenticated = useSelector(state => state.authReducer.isAuthenticated)
+    const { isAuthenticated, user } = useSelector(state => state.authReducer)
 
     return (
         <Route
             {...rest}
             render={(props) =>
-                isAuthenticated ? (
+                isAuthenticated && user.role === "resident" ? (
                     <Component {...props} />
                 ) : (
                         <Redirect
@@ -28,4 +28,4 @@ function PrivateRoute({ component: Component, ...rest }) {
     );
 }
 
-export default PrivateRoute;
+export default UserRoute;
