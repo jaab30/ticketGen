@@ -13,6 +13,7 @@ import UserContact from "./pages/UserContact";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminTicketMain from "./pages/AdminTicketMain";
 import AdminTicketList from "./pages/AdminTicketList";
+import AdminTicketDetail from "./pages/AdminTicketDetail";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { loadUser } from "./actions/authAction";
@@ -39,8 +40,8 @@ function App() {
           <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
           <AdminRoute exact path="/admin/ticketrequest" component={AdminTicketMain} />
           <AdminRoute exact path="/admin/ticketlist" component={AdminTicketList} />
-          {/* <UserRoute exact path="/user/ticketdetails" component={UserTicketDetail} />
-          <UserRoute exact path="/user/contact" component={UserContact} /> */}
+          <AdminRoute exact path="/admin/ticketdetails" component={AdminTicketDetail} />
+          {/* <UserRoute exact path="/user/contact" component={UserContact} /> */}
         </Switch>
       </Router>
     </Provider>

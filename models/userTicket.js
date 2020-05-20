@@ -22,6 +22,14 @@ const UserTicketSchema = new Schema({
     comments: {
         type: Array
     },
+    newAdminComment: {
+        type: Boolean,
+        default: false
+    },
+    newUserComment: {
+        type: Boolean,
+        default: false
+    },
     images: {
         type: Array
     },

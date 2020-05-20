@@ -8,7 +8,9 @@ const upload = require("../../middleware/upload");
 // uses /api
 router.get("/tickets", controller.findAll);
 router.post("/tickets", controller.save);
+router.put("/ticket/update/:id", controller.updateStatus);
 router.post("/ticket/comment/:id", controller.addComment);
+router.post("/ticket/comment/new/:id", controller.newComment);
 router.delete("/ticket/:id", controller.delete);
 
 // Routes for showing, creating and deleting images

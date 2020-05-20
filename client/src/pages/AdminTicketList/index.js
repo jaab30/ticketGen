@@ -30,6 +30,8 @@ function UserTicketList() {
             return `fas fa-spinner fa-1x ml-2 text-warning`
         } else if (tickets[index].status === "Completed") {
             return `fas fa-check fa-1x ml-2 text-success`
+        } else if (tickets[index].status === "Received") {
+            return `far fa-envelope-open fa-1x ml-2 text-success`
         } else {
             return ``
         }
@@ -84,7 +86,7 @@ function UserTicketList() {
                                             <td>{ticket.subject}</td>
                                             <td>{ticket.status}<Icon className={ticketStatusIcon(i)} /></td>
                                             <td><Moment format="MMMM Do, YYYY">{ticket.date}</Moment></td>
-                                            <td><Icon className={status(i)} /></td>
+                                            <td><Icon title="Status" className={status(i)} />{ticket.newUserComment ? <Icon title="New Comment" className="fas fa-folder-plus fa-1x ml-3 text-danger" /> : ""}</td>
                                         </tr>
                                     ))}
                                 </tbody>

@@ -32,7 +32,7 @@ import "./style.css";
 function AdminTicketMain() {
 
     const { user, allUsers } = useSelector(state => state.authReducer);
-    const { userTickets, currentImage, isPostSuccess, isLoading } = useSelector(state => state.ticketReducer);
+    const { userTickets, allTickets, currentImage, isPostSuccess, isLoading } = useSelector(state => state.ticketReducer);
     const error = useSelector(state => state.errorReducer);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -87,16 +87,10 @@ function AdminTicketMain() {
     }
 
     const generateTixId = () => {
-        let lastIdNum;
-        if (userTickets.length === 0) {
-            lastIdNum = 0
-        } else {
-            const lastId = userTickets.slice(-1)[0].tixId;
-            lastIdNum = parseInt(lastId.split("-")[2])
-        }
+
         const dateObj = new Date();
         const dateFormat = dateObj.getFullYear() + "" + (dateObj.getMonth() + 1) + "" + dateObj.getDate();
-        const fullIdGen = dateFormat + "-" + user.firstName.charAt(0) + "" + user.lastName.charAt(0) + "-" + (lastIdNum + 1)
+        const fullIdGen = dateFormat + "-admin-" + (allTickets.length + 1)
         setTixId(fullIdGen)
     };
 
@@ -124,11 +118,12 @@ function AdminTicketMain() {
                                             onChange={(e) => setUserId(e.target.value)}
                                         >
                                             <option value="Default" disabled>Please select :</option>
-                                            {allUsers.filter(user => user.role !== "admin").map(user => (
-                                                <option value={user._id}>{`${user.firstName} ${user.lastName}`}</option>
+                                            {allUsers.filter(user => user.role !== "admin").map((user, i) => (
+                                                <option key={i} value={user._id}>{`${user.firstName} ${user.lastName}`}</option>
                                             ))}
                                         </Input>
-                                    </FormGroup></Col>
+                                    </FormGroup>
+                                </Col>
                                 <Col md={5}><P className="mt-1 tixid-text">Ticket ID: {tixId}</P></Col>
                                 <Col md={12}>
                                     <FormGroup className="mb-1">

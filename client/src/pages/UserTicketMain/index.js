@@ -93,8 +93,8 @@ function TicketMain() {
         }
         const dateObj = new Date();
         const dateFormat = dateObj.getFullYear() + "" + (dateObj.getMonth() + 1) + "" + dateObj.getDate();
-        const fullIdGen = dateFormat + "-" + user.firstName.charAt(0) + "" + user.lastName.charAt(0) + "-" + (lastIdNum + 1)
-        setTixId(fullIdGen)
+        const fullIdGen = dateFormat + "-" + user.email.split("@")[0] + "-" + (lastIdNum + 1);
+        setTixId(fullIdGen);
     };
 
 

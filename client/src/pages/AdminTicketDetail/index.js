@@ -7,7 +7,7 @@ import MainNav from "../../components/MainNav";
 import ImageLoader from "../../components/ImageLoader";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addComment, postSuccess, addImage, isLoadingImage, isNewComment } from "../../actions/ticketAction";
+import { addComment, postSuccess, addImage, isLoadingImage, changeTixStatus, isNewComment } from "../../actions/ticketAction";
 import { COMMENT_ERROR } from "../../actions/actions";
 import { clearErrors } from "../../actions/authAction";
 import Icon from "../../components/Icon";
@@ -25,13 +25,21 @@ function UserTicketDetail(props) {
     const dispatch = useDispatch();
 
     const [commentPost, setCommentPost] = useState("");
+    const [newStatus, setNewStatus] = useState("Received");
     const [isLoaded, setIsLoaded] = useState(false);
     const [msgComment, setMsgComment] = useState(null);
 
 
     useEffect(() => {
 
-        dispatch(isNewComment(_id, null, false))
+        dispatch(isNewComment(_id, false, null))
+
+        if (status === "Submitted") {
+            const dataObj = {
+                status: newStatus
+            }
+            dispatch(changeTixStatus(_id, dataObj));
+        }
 
         if (error.id === COMMENT_ERROR) {
             setMsgComment(error.msg.msg)
@@ -46,6 +54,15 @@ function UserTicketDetail(props) {
         }
     }, [error, isPostSuccess, dispatch])
 
+    const handleStatusChange = (e) => {
+        e.preventDefault();
+        setNewStatus(e.target.value)
+        const dataObj = {
+            status: e.target.value
+        }
+        dispatch(changeTixStatus(_id, dataObj));
+        setIsLoaded(!isLoaded);
+    }
 
     const handleCommentsForm = (e) => {
         e.preventDefault();
@@ -57,7 +74,7 @@ function UserTicketDetail(props) {
         };
 
         dispatch(addComment(_id, commentObj));
-        dispatch(isNewComment(_id, true, null))
+        dispatch(isNewComment(_id, null, true))
         setIsLoaded(!isLoaded);
         setCommentPost("");
 
@@ -88,11 +105,31 @@ function UserTicketDetail(props) {
                     </Col>
                     <Col className="p-4" md={12}>
                         <Row form className="detail-container">
-                            <Col className="pl-2" md={6}>
+                            <Col className="pl-2" md={8}>
                                 <P><strong>Ticket Id:</strong> {tixId}</P>
                                 <P><strong>Date Submitted: </strong><Moment format="MMMM Do, YYYY">{date}</Moment></P>
                             </Col>
-                            <Col className="pr-1" md={6}>
+                            <Col className="pr-1" md={2}>
+                                <Form>
+                                    <FormGroup>
+                                        <Input
+                                            defaultValue={"Default"}
+                                            type="select"
+                                            name="select"
+                                            id="tixStatusSelect"
+                                            className="mt-1"
+                                            onChange={(e) => handleStatusChange(e)}
+                                        >
+                                            <option value="Default" disabled>Change Status</option>
+                                            <option value="Submitted">Submitted</option>
+                                            <option value="Received">Received</option>
+                                            <option value="In Progress">In Progress</option>
+                                            <option value="Completed">Completed</option>
+                                        </Input>
+                                    </FormGroup>
+                                </Form>
+                            </Col>
+                            <Col className="pr-1" md={2}>
                                 <P className="status-text"><Icon className={statusIcon()} /><strong>{status}</strong></P>
                             </Col>
                         </Row>
@@ -117,7 +154,7 @@ function UserTicketDetail(props) {
                                 {comments.map((comment, i) => (
                                     <Row key={i} className={comment.from === `${firstName} ${lastName}` ? "comment-wrapper" : "admin-comment-wrapper"}>
                                         <Col md={6} className="p-0">
-                                            <P className="comment-text"><strong>From:</strong> {comment.from}</P>
+                                            <P className="comment-text"><strong>From:</strong> "{comment.from}"</P>
                                         </Col>
                                         <Col md={6} className="p-0">
                                             <P className="comment-text text-right"><strong>Date posted:</strong> <Moment format="MMMM Do, YYYY">{comment.date}</Moment></P>

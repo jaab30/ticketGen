@@ -3,11 +3,13 @@ import {
     LOAD_TICKETS,
     LOAD_USER_TICKETS,
     POST_TICKET,
+    UPDATE_TICKET,
     CLEAR_TICKETS,
     POST_ERROR,
     POST_SUCCESS,
     CURRENT_TICKET,
     POST_COMMENT,
+    IS_NEW_COMMENT,
     COMMENT_ERROR,
     POST_IMAGE,
     IMAGE_ERROR,
@@ -53,8 +55,6 @@ export const addTicket = (data) => dispatch => {
         })
 }
 
-
-
 export const postSuccess = () => {
     return {
         type: POST_SUCCESS
@@ -69,6 +69,37 @@ export const addComment = (id, data) => dispatch => {
                 type: POST_COMMENT,
                 payload: data.data
             })
+        })
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status, COMMENT_ERROR));
+        })
+}
+export const isNewComment = (id, newUserComment, newAdminComment) => dispatch => {
+    let dataObj
+    if (newUserComment === null) { dataObj = { newAdminComment } }
+    if (newAdminComment === null) { dataObj = { newUserComment } }
+
+    axios.post("/api/ticket/comment/new/" + id, dataObj)
+        .then(data => {
+            console.log("ACTION AFTER", data.data);
+            dispatch({
+                type: IS_NEW_COMMENT,
+                payload: data.data
+            })
+        })
+        .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status, COMMENT_ERROR));
+        })
+}
+export const changeTixStatus = (id, data) => dispatch => {
+
+    axios.put("/api/ticket/update/" + id, data)
+        .then(data => {
+            dispatch({
+                type: UPDATE_TICKET,
+                payload: data.data
+            })
+
         })
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status, COMMENT_ERROR));
