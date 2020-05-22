@@ -36,7 +36,7 @@ function Login() {
             dispatch(clearErrors());
             history.push("/admin/dashboard");
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error, isAuthenticated, dispatch, history])
 
     const handleFormSubmit = (e) => {

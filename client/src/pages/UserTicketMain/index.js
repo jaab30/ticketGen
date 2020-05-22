@@ -63,7 +63,7 @@ function TicketMain() {
             history.push("/user/ticketlist");
             dispatch(postSuccess());
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error, isPostSuccess, currentImage, history, dispatch])
 
     const handleTicketForm = (e) => {

@@ -44,6 +44,7 @@ function UserTicketDetail(props) {
             dispatch(clearErrors());
             dispatch(postSuccess());
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error, isPostSuccess, dispatch])
 
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Container,
     Row,
@@ -27,7 +27,7 @@ function AdminDashboard() {
         dispatch(loadAllTickets());
         dispatch(loadAllUsers());
         dispatch(clearCurrentImages());
-    }, [])
+    }, [dispatch])
 
     const formatPhone = (phoneNumberString) => {
         const cleaned = ('' + phoneNumberString).replace(/\D/g, '')

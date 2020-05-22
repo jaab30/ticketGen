@@ -45,7 +45,7 @@ function UserContact() {
         if (isPostMessageSuccess) {
             dispatch(postMessageSuccess())
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error, dispatch])
 
     const handleForm = (e) => {

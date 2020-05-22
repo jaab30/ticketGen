@@ -67,8 +67,6 @@ export default function (state = initialState, action) {
                 isPostSuccess: true
             }
         case IS_NEW_COMMENT:
-            console.log("REDUCER", action.payload);
-
             return {
                 ...state,
                 currentTicket: action.payload,

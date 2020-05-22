@@ -21,7 +21,7 @@ function AdminMessagesList() {
     useEffect(() => {
         dispatch(loadAllMessages());
         dispatch(clearCurrentImages());
-    }, [])
+    }, [dispatch])
 
 
     const showMessage = (id) => {

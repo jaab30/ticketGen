@@ -29,7 +29,6 @@ function UserTicketDetail(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [msgComment, setMsgComment] = useState(null);
 
-
     useEffect(() => {
 
         dispatch(isNewComment(_id, false, null))
@@ -52,6 +51,7 @@ function UserTicketDetail(props) {
             dispatch(clearErrors());
             dispatch(postSuccess());
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error, isPostSuccess, dispatch])
 
     const handleStatusChange = (e) => {

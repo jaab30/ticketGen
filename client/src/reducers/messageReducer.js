@@ -34,10 +34,6 @@ export default function (state = initialState, actions) {
                 ...state,
                 isPostMessageSuccess: false
             }
-        case LOAD_MESSAGES:
-            return {
-                messages: actions.payload
-            }
         default:
             return state
     }

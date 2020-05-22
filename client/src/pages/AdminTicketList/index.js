@@ -20,7 +20,7 @@ function UserTicketList() {
     useEffect(() => {
         dispatch(loadAllTickets());
         dispatch(clearCurrentImages());
-    }, [])
+    }, [dispatch])
 
     const ticketStatusIcon = (index) => {
 
@@ -35,8 +35,6 @@ function UserTicketList() {
         } else {
             return ``
         }
-        // `<i class="far fa-envelope-open"></i>
-        // <i class="far fa-envelope"></i>`
     }
 
     const status = (index) => {

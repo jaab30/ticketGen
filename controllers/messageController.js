@@ -2,48 +2,45 @@ const UserMessage = require("../models/userMessage");
 
 module.exports = {
 
-    getMessages(req, res) {
-        UserMessage.find()
-            .populate("userId")
-            .then(data => {
-                res.json(data)
-            })
-            .catch(err => console.log(err));
-    },
-
-    postMessages(req, res) {
-
-        const { subject, description, userId, isMessageNew } = req.body;
-
-        if (!subject || !description) {
-            return res.status(400).json({ msg: "Please enter all fields" })
+    async getMessages(req, res) {
+        try {
+            const data = await UserMessage.find().populate("userId")
+            res.json(data)
+        } catch (err) {
+            throw err;
         }
-
-        const messageObj = new UserMessage({
-            userId,
-            subject,
-            description,
-            isMessageNew
-        })
-
-        messageObj.save()
-            .then(data => {
-                res.json(data);
-            })
-            .catch(err => console.log(err));
     },
-    updateMessageStatus: function (req, res) {
 
-        const { isMessageNew } = req.body;
-        console.log(isMessageNew);
-        console.log(req.params.id);
+    async postMessages(req, res) {
+        try {
+            const { subject, description, userId, isMessageNew } = req.body;
 
-        UserMessage.findByIdAndUpdate(req.params.id, { isMessageNew }, { new: true })
-            .then(data => {
-                console.log(data);
+            if (!subject || !description) {
+                return res.status(400).json({ msg: "Please enter all fields" })
+            }
 
-                res.json(data)
+            const messageObj = new UserMessage({
+                userId,
+                subject,
+                description,
+                isMessageNew
             })
-            .catch(err => console.log(err));
+
+            const data = await messageObj.save()
+            res.json(data);
+
+        } catch (err) {
+            throw err;
+        }
     },
+    async updateMessageStatus(req, res) {
+        try {
+            const { isMessageNew } = req.body;
+            const data = await UserMessage.findByIdAndUpdate(req.params.id, { isMessageNew }, { new: true })
+            res.json(data)
+
+        } catch (err) {
+            throw err;
+        }
+    }
 }

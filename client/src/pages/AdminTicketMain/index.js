@@ -26,13 +26,13 @@ import {
     clearCurrentImages,
     imageDeleteNewTix
 } from "../../actions/ticketAction";
-import { clearErrors, loadAllUsers } from "../../actions/authAction";
+import { clearErrors } from "../../actions/authAction";
 import "./style.css";
 
 function AdminTicketMain() {
 
-    const { user, allUsers } = useSelector(state => state.authReducer);
-    const { userTickets, allTickets, currentImage, isPostSuccess, isLoading } = useSelector(state => state.ticketReducer);
+    const { allUsers } = useSelector(state => state.authReducer);
+    const { allTickets, currentImage, isPostSuccess, isLoading } = useSelector(state => state.ticketReducer);
     const error = useSelector(state => state.errorReducer);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -50,7 +50,6 @@ function AdminTicketMain() {
     useEffect(() => {
 
         dispatch(isLoadingImage(false));
-        // dispatch(loadAllUsers());
 
         generateTixId();
 
@@ -63,10 +62,10 @@ function AdminTicketMain() {
         if (isPostSuccess) {
             setMsg(null)
             dispatch(clearErrors());
-            history.push("/user/ticketlist");
+            history.push("/admin/ticketlist");
             dispatch(postSuccess());
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error, isPostSuccess, currentImage, history, dispatch])
 
     const handleTicketForm = (e) => {

@@ -1,6 +1,3 @@
-/* .listRow {
-    min-height: 400px;
-} */
 
 table {
     background-color: hsl(0, 0%, 89%, .4);
@@ -18,9 +15,6 @@ i.tixListIcon {
     padding-left: 10px;
 }
 
-/* td {
-    padding: 20px;
-} */
 
 @media screen and (max-width: 767px) {
     th, td {

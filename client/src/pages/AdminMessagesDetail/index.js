@@ -10,7 +10,7 @@ import { useParams } from "react-router";
 import Icon from "../../components/Icon";
 import { changeMessageStatus } from "../../actions/messageAction";
 
-function AdminTicketDetail(props) {
+function AdminTicketDetail() {
 
     const messages = useSelector(state => state.messageReducer.messages)
     let { id } = useParams();
@@ -22,7 +22,6 @@ function AdminTicketDetail(props) {
     const { firstName, lastName, email } = userId;
 
     useEffect(() => {
-        console.log(current);
 
         if (current[0].isMessageNew) {
             const objData = {
@@ -30,6 +29,7 @@ function AdminTicketDetail(props) {
             }
             dispatch(changeMessageStatus(id, objData))
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

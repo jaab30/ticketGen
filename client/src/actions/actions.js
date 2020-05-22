@@ -16,6 +16,7 @@ export const UPDATE_ERROR = "UPDATE_TICKET";
 export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
 // ticket Reducer
 export const LOAD_TICKETS = "LOAD_TICKETS";
+export const LOAD_TICKET_ERROR = "LOAD_TICKET_ERROR";
 export const LOAD_USER_TICKETS = "LOAD_USER_TICKETS";
 export const POST_TICKET = "POST_TICKET";
 export const UPDATE_TICKET = "UPDATE_TICKET";
