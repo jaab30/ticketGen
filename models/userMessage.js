@@ -8,8 +8,8 @@ const UserMessageSchema = new Schema({
         default: Date.now
     },
     userId: {
-        type: String,
-        required: true
+        type: Schema.Types.ObjectId,
+        ref: "user"
     },
 
     subject: {
@@ -19,6 +19,10 @@ const UserMessageSchema = new Schema({
     description: {
         type: String,
         required: true
+    },
+    isMessageNew: {
+        type: Boolean,
+        default: true
     }
 
 });

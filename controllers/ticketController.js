@@ -64,9 +64,6 @@ module.exports = {
             .catch(err => console.log(err));
     },
     newComment: function (req, res) {
-        console.log(req.body);
-
-        // const { newAdminComment, newUserComment } = req.body;
 
         UserTicket.findByIdAndUpdate(req.params.id, req.body, { new: true })
             .then(data => res.json(data))

@@ -56,7 +56,8 @@ function UserContact() {
         const messageObj = {
             userId: user._id,
             subject: messageSubject,
-            description: messageDescription
+            description: messageDescription,
+            isMessageNew: true
         }
 
         dispatch(postMessages(messageObj));

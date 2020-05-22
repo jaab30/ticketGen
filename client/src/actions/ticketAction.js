@@ -63,7 +63,7 @@ export const postSuccess = () => {
 
 export const addComment = (id, data) => dispatch => {
 
-    axios.post("/api/ticket/comment/" + id, data)
+    axios.put("/api/ticket/comment/" + id, data)
         .then(data => {
             dispatch({
                 type: POST_COMMENT,
@@ -79,9 +79,8 @@ export const isNewComment = (id, newUserComment, newAdminComment) => dispatch =>
     if (newUserComment === null) { dataObj = { newAdminComment } }
     if (newAdminComment === null) { dataObj = { newUserComment } }
 
-    axios.post("/api/ticket/comment/new/" + id, dataObj)
+    axios.put("/api/ticket/comment/new/" + id, dataObj)
         .then(data => {
-            console.log("ACTION AFTER", data.data);
             dispatch({
                 type: IS_NEW_COMMENT,
                 payload: data.data
