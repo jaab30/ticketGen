@@ -20,7 +20,8 @@ function UserTicketList() {
     useEffect(() => {
         dispatch(loadUserTickets());
         dispatch(clearCurrentImages());
-    })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const statusIcon = (index) => {
 

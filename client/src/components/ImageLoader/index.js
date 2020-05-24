@@ -53,11 +53,11 @@ function ImageLoader(props) {
 
     return (
         <React.Fragment>
-            <Col md={12}>
+            <Col lg={12}>
                 <Form onSubmit={handleImageForm}>
                     {msgImage ? <Alert color="danger">{msgImage}</Alert> : null}
                     <Row>
-                        <Col className="p-0" md={4}>
+                        <Col className="p-0" lg={6}>
                             <FormGroup className="mb-2">
                                 <CustomInput
                                     className="file-input"
@@ -69,14 +69,14 @@ function ImageLoader(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col className="text-center mb-2" md={2}>
+                        <Col className="ImageSubmitBtn mb-2" lg={6}>
                             <Button type="submit" color="dark">Upload Image</Button>
                         </Col>
                     </Row>
                 </Form>
             </Col>
-            <Col md={12} className="detail-box-wrapper">
-                {props.isLoading ? <Row><Col className="text-center" md={12}><Icon className="text-center mt-3 fas fa-spinner fa-pulse fa-3x" /></Col></Row> : props.images.length !== 0 ? props.images.map((img, i) => {
+            <Col lg={12} className="detail-box-wrapper">
+                {props.isLoading ? <Row><Col className="text-center" lg={12}><Icon className="text-center mt-3 fas fa-spinner fa-pulse fa-3x" /></Col></Row> : props.images.length !== 0 ? props.images.map((img, i) => {
                     return <div key={i} className="loading"><Modal imgSrc={"/api/ticket/image/" + img}><Img className="tixImages" src={"/api/ticket/image/" + img} alt="Ticket Images" width="100%" /></Modal></div>
                 }) : props.currentImages.map((img, i) => {
                     return <div key={i} className="loading"><Modal imgSrc={"/api/ticket/image/" + img}><Img className="tixImages" src={"/api/ticket/image/" + img} alt="Ticket Images" width="100%" /><Button className="img-del-btn bg-dark text-white" onClick={() => removeImage(img)}><Icon data-id={i} className="fas fa-trash-alt img-icon" /></Button></Modal></div>

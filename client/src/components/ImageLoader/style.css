@@ -8,8 +8,21 @@
     background-position: center;
     background-size: 20px;
   }
+  .ImageSubmitBtn {
+    text-align: left;
+  }
 
   .tixImages:hover {
     cursor: pointer;
+  }
+
+  .file-input {
+    overflow-wrap: break-word;
+  }
+
+  @media screen and (max-width: 991px) {
+    .ImageSubmitBtn {
+      text-align: center;
+    }
   }
  

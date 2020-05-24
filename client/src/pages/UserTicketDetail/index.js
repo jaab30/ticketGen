@@ -121,7 +121,7 @@ function UserTicketDetail(props) {
                                             <P className="comment-text"><strong>From:</strong> {comment.from}</P>
                                         </Col>
                                         <Col md={6} className="p-0">
-                                            <P className="comment-text text-right"><strong>Date posted:</strong> <Moment format="MMMM Do, YYYY">{comment.date}</Moment></P>
+                                            <P className="comment-text date-comment"><strong>Date posted:</strong> <Moment format="MMMM Do, YYYY">{comment.date}</Moment></P>
                                         </Col>
                                         <Col md={12} className="p-0">
 

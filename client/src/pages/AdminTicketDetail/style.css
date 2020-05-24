@@ -58,6 +58,10 @@ p.status-text {
     text-align: right;
 }
 
+p.date-comment {
+    text-align: right;
+}
+
 .loading {
     position: relative;
     background-image: url('./images/loading.gif');
@@ -80,6 +84,9 @@ p.status-text {
 
   @media screen and (max-width: 767px) {
     p.status-text {
+        text-align: left;
+    }
+    p.date-comment {
         text-align: left;
     }
   }

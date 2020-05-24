@@ -59,12 +59,12 @@ function MainNav() {
                                 <Link className="nav-link" to="/admin/ticketlist">Ticket Status</Link>
                             </NavItem>
                             <NavItem>
-                                <Link className="nav-link" to="/admin/contact">Contact</Link>
+                                <Link className="nav-link" to="/admin/messages">Messages</Link>
                             </NavItem>
                         </Nav>
 
-                        <Span className="nav-text"><Link className="nav-link nav-brand-text text-success" to="/admin/dashboard">Admin Dashboard</Link></Span>
-                        <Span className="nav-text"><Logout className="nav-link nav-brand-text text-success" /></Span>
+                        <Span className="nav-text"><Link className="nav-link nav-brand-text-admin" to="/admin/dashboard">Admin Dashboard</Link></Span>
+                        <Span className="nav-text"><Logout className="nav-link nav-brand-text-admin" /></Span>
                     </Collapse>
                 </Navbar>
             }

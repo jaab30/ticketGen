@@ -47,7 +47,7 @@ function AdminDashboard() {
             <MainNav />
             <Container>
                 <Row>
-                    <Col md={6} className="text-center">
+                    <Col lg={6} className="text-center">
                         <H1 className="display-4 mb-4 mt-3 text-center text-dark">Hello {firstName}!</H1>
                         <ProfileImage />
                     </Col>
@@ -55,28 +55,28 @@ function AdminDashboard() {
                         <UpdateUserForm
                             hideUpdateForm={showUpdateForm}
                         /> :
-                        <Col md={6} className="mt-4 profileInfo">
+                        <Col lg={6} className="mt-4 profileInfo">
                             <Row>
-                                <Col md={12}> <H1 className="display-5 mb-4 mt-1 text-center text-dark">Admin Info</H1></Col>
-                                <Col md={12}> <P className="bk-white"><strong>email:</strong> {email}</P></Col>
-                                <Col md={6}> <P><strong>First Name:</strong> {firstName}</P></Col>
-                                <Col md={6}> <P><strong>Last Name:</strong> {lastName}</P></Col>
-                                <Col md={12}> <P><strong>Address:</strong> {address}</P></Col>
-                                <Col md={12}> <P><strong>Apt, Suite, Unit:</strong> {address2}</P></Col>
-                                <Col md={4}> <P><strong>City:</strong> {city}</P></Col>
-                                <Col md={4}>  <P><strong>State:</strong> {state}</P></Col>
-                                <Col md={4}> <P><strong>Zip:</strong> {zip}</P></Col>
-                                <Col md={6}> <P><strong>Phone#:</strong> {formatPhone(phoneNumber)} </P></Col>
+                                <Col lg={12}> <H1 className="display-5 mb-4 mt-1 text-center text-dark">Admin Info</H1></Col>
+                                <Col lg={12} md={6}> <P className="bk-white"><strong>email:</strong> {email}</P></Col>
+                                <Col lg={6} md={6}> <P><strong>First Name:</strong> {firstName}</P></Col>
+                                <Col lg={6} md={6}> <P><strong>Last Name:</strong> {lastName}</P></Col>
+                                <Col lg={12} md={6}> <P><strong>Address:</strong> {address}</P></Col>
+                                <Col lg={12} md={6}> <P><strong>Apt, Suite, Unit:</strong> {address2}</P></Col>
+                                <Col lg={4} md={6}> <P><strong>City:</strong> {city}</P></Col>
+                                <Col lg={4} md={6}>  <P><strong>State:</strong> {state}</P></Col>
+                                <Col lg={4} md={6}> <P><strong>Zip:</strong> {zip}</P></Col>
+                                <Col lg={6} md={6}> <P><strong>Phone#:</strong> {formatPhone(phoneNumber)} </P></Col>
                             </Row>
                         </Col>
                     }
                 </Row>
 
                 <Row className="mt-4 mb-4 pb-4">
-                    <Col md={3} className="mt-4"><Link className="dash-link" to="/admin/ticketrequest"><Button outline color="secondary" size="lg" block> <Icon className="far fa-clipboard fa-1x mr-3 dash-icon" />Submit a Ticket</Button></Link></Col>
-                    <Col md={3} className="mt-4"><Link className="dash-link" to="/admin/ticketlist"><Button outline color="secondary" size="lg" block><Icon className="far fa-hourglass fa-1x mr-3 dash-icon" />Ticket Status</Button></Link></Col>
-                    <Col md={3} className="mt-4"><Button onClick={showUpdateForm} outline color="secondary" size="lg" block><Icon className="far fa-edit fa-1x mr-3 dash-icon" />Update Profile</Button></Col>
-                    <Col md={3} className="mt-4"><Link className="dash-link" to="/admin/messages"><Button outline color="secondary" size="lg" block><Icon className="far fa-question-circle fa-1x mr-3 dash-icon" />Messages</Button></Link></Col>
+                    <Col lg={3} md={6} className="mt-4"><Link className="dash-link" to="/admin/ticketrequest"><Button outline color="secondary" size="lg" block> <Icon className="far fa-clipboard fa-1x mr-3 dash-icon" />Submit a Ticket</Button></Link></Col>
+                    <Col lg={3} md={6} className="mt-4"><Link className="dash-link" to="/admin/ticketlist"><Button outline color="secondary" size="lg" block><Icon className="far fa-hourglass fa-1x mr-3 dash-icon" />Ticket Status</Button></Link></Col>
+                    <Col lg={3} md={6} className="mt-4"><Button onClick={showUpdateForm} outline color="secondary" size="lg" block><Icon className="far fa-edit fa-1x mr-3 dash-icon" />Update Profile</Button></Col>
+                    <Col lg={3} md={6} className="mt-4"><Link className="dash-link" to="/admin/messages"><Button outline color="secondary" size="lg" block><Icon className="far fa-question-circle fa-1x mr-3 dash-icon" />Messages</Button></Link></Col>
                 </Row>
             </Container>
         </React.Fragment>

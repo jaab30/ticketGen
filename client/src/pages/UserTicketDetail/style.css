@@ -57,6 +57,10 @@ p.status-text {
     font-size: 1.5em;
     text-align: right;
 }
+p.date-comment {
+    text-align: right;
+
+}
 
 .loading {
     position: relative;
@@ -80,6 +84,9 @@ p.status-text {
 
   @media screen and (max-width: 767px) {
     p.status-text {
+        text-align: left;
+    }
+    p.date-comment {
         text-align: left;
     }
   }

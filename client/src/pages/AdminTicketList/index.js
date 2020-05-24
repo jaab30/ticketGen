@@ -20,7 +20,8 @@ function UserTicketList() {
     useEffect(() => {
         dispatch(loadAllTickets());
         dispatch(clearCurrentImages());
-    }, [dispatch])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const ticketStatusIcon = (index) => {
 

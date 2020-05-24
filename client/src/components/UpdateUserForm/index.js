@@ -73,19 +73,19 @@ export default function UpdateUserForm(props) {
 
     return (
         <React.Fragment>
-            <Col md={6} className="mt-4 profileInfo">
+            <Col lg={6} className="mt-4 profileInfo">
                 <Form className="logForm bg-light p-4 text-dark">
-                    <Col md={12} className=" text-right">
+                    <Col lg={12} className=" text-right">
                         <Icon onClick={props.hideUpdateForm} className="far fa-window-close update-icon" ></Icon>
                     </Col>
                     <Row>
-                        <Col md={12}> <H1 className="display-5 mb-4 mt-1 text-center text-dark">Update Profile</H1></Col>
-                        <Col md={12}>
+                        <Col lg={12}> <H1 className="display-5 mb-4 mt-1 text-center text-dark">Update Profile</H1></Col>
+                        <Col lg={12}>
                             {msg ? <Alert color="danger">{msg}</Alert> : null}
                         </Col>
-                        <Col md={12}> <P className="bk-white"><strong>email:</strong> {user.email}</P>
+                        <Col lg={12}> <P className="bk-white"><strong>email:</strong> {user.email}</P>
                         </Col>
-                        <Col md={6} className=""> <P><strong>First Name:</strong></P>
+                        <Col lg={6} className=""> <P><strong>First Name:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -98,7 +98,7 @@ export default function UpdateUserForm(props) {
                             </FormGroup>
                         </Col>
 
-                        <Col md={6} className=""> <P><strong>Last Name:</strong></P>
+                        <Col lg={6} className=""> <P><strong>Last Name:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -110,7 +110,7 @@ export default function UpdateUserForm(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={12}> <P><strong>Address:</strong></P>
+                        <Col lg={12}> <P><strong>Address:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -122,7 +122,7 @@ export default function UpdateUserForm(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={12}> <P><strong>Apt, Suite, Unit:</strong></P>
+                        <Col lg={12}> <P><strong>Apt, Suite, Unit:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -134,7 +134,7 @@ export default function UpdateUserForm(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={4} className=""> <P><strong>City:</strong></P>
+                        <Col lg={4} className=""> <P><strong>City:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -146,7 +146,7 @@ export default function UpdateUserForm(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={4} className="">  <P><strong>State:</strong></P>
+                        <Col lg={4} className="">  <P><strong>State:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -158,7 +158,7 @@ export default function UpdateUserForm(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={4} className=""> <P><strong>Zip:</strong></P>
+                        <Col lg={4} className=""> <P><strong>Zip:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="text"
@@ -170,7 +170,7 @@ export default function UpdateUserForm(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={6}> <P><strong>Phone#:</strong></P>
+                        <Col lg={6}> <P><strong>Phone#:</strong></P>
                             <FormGroup>
                                 <Input
                                     type="phone"
@@ -182,7 +182,7 @@ export default function UpdateUserForm(props) {
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={12}>
+                        <Col lg={12}>
                             <Button onClick={handleFormSubmit} color="dark" size="lg" block>{spinner}</Button>
                         </Col>
                     </Row>

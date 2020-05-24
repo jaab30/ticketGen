@@ -6,28 +6,26 @@ a.nav-text {
 a.nav-link {
     text-align: right;
     padding: 10px 0 5px;
-
 }
 
-a.nav-brand-text {
-    /* padding: 10px 0; */
-    /* color: red; */
+a.nav-brand-text-admin, a.nav-brand-text {
     margin-right: 20px;
 }
 
-a.nav-brand-text:hover {
-    /* padding: 10px 0; */
-    color: rgba(0,0,0,.5)
+a.nav-brand-text-admin {
+    color: rgb(2, 150, 2);
+}
 
+a.nav-brand-text-admin:hover, a.nav-brand-text:hover {
+    color: rgba(0,0,0,.5)
 }
 
 @media screen and (max-width: 767px) {
-    a.nav-brand-text {
+    a.nav-brand-text-admin, a.nav-brand-text {
         margin-right: 0px;
         color: rgba(0,0,0,.5);
     }
-    a.nav-brand-text:hover {
+    a.nav-brand-text-admin:hover, a.nav-brand-text:hover {
         color: rgba(0,0,0,.9)
-    
     }
   }

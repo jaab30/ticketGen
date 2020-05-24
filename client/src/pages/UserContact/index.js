@@ -71,30 +71,30 @@ function UserContact() {
             <MainNav />
             <Container>
                 <Row className="mt-4 mb-4">
-                    <Col className="contactInfo" md={5}>
+                    <Col className="contactInfo" lg={5}>
                         <Row className="text-center pb-4">
-                            <Col md={12} className="mt-4">
+                            <Col lg={12} className="mt-4">
                                 <span><Icon className="far fa-envelope fa-3x" /></span>
                                 <P className="contactText text-dark">contact@companyweb.com</P>
                             </Col>
-                            <Col md={12} className="mt-4">
+                            <Col lg={12} className="mt-4">
                                 <span><Icon className="fas fa-mobile-alt fa-3x"></Icon></span>
                                 <P className="contactText">(407) 111-2233</P>
                             </Col>
-                            <Col md={12} className="mt-4">
+                            <Col lg={12} className="mt-4">
                                 <span><Icon className="fas fa-street-view fa-3x"></Icon></span>
                                 <P className="contactText">PO Box 987654, Orlando - FL 32801</P>
                             </Col>
                         </Row>
                     </Col>
-                    <Col className="p-0 mt-4" md={6}>
+                    <Col className="p-0 mt-4" lg={6}>
                         <Row className="logForm">
-                            <Col md={12}>
+                            <Col lg={12}>
                                 <Form className="mt-4 pl-4 pr-4 pb-0 pt-4 text-dark">
                                     <h2 className="display-4 text-dark text-center">Contact Form</h2>
                                     {/* {msg ? <Alert color="danger">{msg}</Alert> : null} */}
                                     <Row form>
-                                        <Col md={12}>
+                                        <Col lg={12}>
                                             <FormGroup>
                                                 <Label for="contactSubject">Subject</Label>
                                                 <Input
@@ -107,7 +107,7 @@ function UserContact() {
                                                 />
                                             </FormGroup>
                                         </Col>
-                                        <Col md={12}>
+                                        <Col lg={12}>
                                             <FormGroup>
                                                 <Label for="contactDescription">Description</Label>
                                                 <Input
@@ -122,7 +122,7 @@ function UserContact() {
                                         </Col>
 
                                     </Row>
-                                    <Col className="p-0" md={12}>
+                                    <Col className="p-0" lg={12}>
                                         {msg ?
                                             <>
                                                 <Alert color="danger">{msg}</Alert>
@@ -140,7 +140,7 @@ function UserContact() {
                     </Col>
                 </Row>
                 <Row className="mb-4">
-                    <Col md={12} className="text-center">
+                    <Col lg={12} className="text-center">
                         <Icon className="back-btn far fa-arrow-alt-circle-left fa-2x mt-3 ml-3 text-primary" onClick={history.goBack} />
                     </Col>
                 </Row>

@@ -165,8 +165,8 @@ function AdminTicketMain() {
                         />
                     </Col>
 
-                    <Col className="pl-4 pt-1 text-center" md={12}>
-                        <Button className="mt-1 mb-2" onClick={handleTicketForm} color="dark">{spinner}</Button>
+                    <Col className="pl-4 pr-4 pt-1 text-center" md={12}>
+                        <Button size="lg" block className="mt-1 mb-2" onClick={handleTicketForm} color="dark">{spinner}</Button>
                     </Col>
                 </Row>
 
