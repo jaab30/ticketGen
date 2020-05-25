@@ -60,7 +60,7 @@ function AdminMessagesList() {
                                             <td>{message.userId.email}</td>
                                             <td>{message.subject}<Icon className="" /></td>
                                             <td><Moment format="MMMM Do, YYYY">{message.date}</Moment></td>
-                                            <td><Icon title="Status" className="" />{message.isMessageNew ? <Icon title="Read Message" className="far fa-envelope fa-1x text-danger" /> : <Icon title="New Message" className="far fa-envelope-open fa-1x text-success" />}</td>
+                                            <td><Icon title="Status" className="" />{message.isMessageNew ? <Icon title="New Message" className="far fa-envelope fa-1x text-danger" /> : <Icon title="Read Message" className="far fa-envelope-open fa-1x text-success" />}</td>
                                         </tr>
                                     ))}
                                 </tbody>

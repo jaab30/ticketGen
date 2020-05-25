@@ -152,7 +152,7 @@ function UserTicketDetail(props) {
                         <Col className="p-0" md={12}>
                             <div className="detail-box-wrapper">
                                 {comments.map((comment, i) => (
-                                    <Row key={i} className={comment.from === `${firstName} ${lastName}` ? "comment-wrapper" : "admin-comment-wrapper"}>
+                                    <Row key={i} className={comment.from === `${firstName} ${lastName} - Admin` ? "admin-comment-wrapper" : "comment-wrapper"}>
                                         <Col md={6} className="p-0">
                                             <P className="comment-text"><strong>From:</strong> "{comment.from}"</P>
                                         </Col>
