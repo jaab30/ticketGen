@@ -85,7 +85,7 @@ function UserTicketList() {
                                             <td>{ticket.subject}</td>
                                             <td>{ticket.status}<Icon className={ticketStatusIcon(i)} /></td>
                                             <td><Moment format="MMMM Do, YYYY">{ticket.date}</Moment></td>
-                                            <td><Icon title="Status" className={status(i)} />{ticket.newUserComment ? <Icon title="New Comment" className="fas fa-folder-plus fa-1x ml-3 text-danger" /> : ""}</td>
+                                            <td><Icon title={ticket.status === "Submitted" ? "New Ticket" : "Read Ticket"} className={status(i)} />{ticket.newUserComment ? <Icon title="New Comment" className="fas fa-folder-plus fa-1x ml-3 text-danger" /> : ""}</td>
                                         </tr>
                                     ))}
                                 </tbody>
