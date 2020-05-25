@@ -5,6 +5,7 @@ import AdminRoute from "./components/AdminRoute";
 import { Provider } from "react-redux";
 import store from "./store";
 import Main from "./pages/Main";
+import NoMatch from "./pages/NoMatch";
 import UserDashboard from "./pages/UserDashboard";
 import UserTicketMain from "./pages/UserTicketMain";
 import UserTicketList from "./pages/UserTicketList";
@@ -45,6 +46,7 @@ function App() {
           <AdminRoute exact path="/admin/ticketdetails" component={AdminTicketDetail} />
           <AdminRoute exact path="/admin/messages" component={AdminMessagesList} />
           <AdminRoute exact path="/admin/messages/:id" component={AdminMessagesDetail} />
+          <Route component={NoMatch} />
         </Switch>
       </Router>
     </Provider>

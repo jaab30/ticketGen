@@ -92,7 +92,6 @@ function UserContact() {
                             <Col lg={12}>
                                 <Form className="mt-4 pl-4 pr-4 pb-0 pt-4 text-dark">
                                     <h2 className="display-4 text-dark text-center">Contact Form</h2>
-                                    {/* {msg ? <Alert color="danger">{msg}</Alert> : null} */}
                                     <Row form>
                                         <Col lg={12}>
                                             <FormGroup>
