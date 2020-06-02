@@ -9,7 +9,7 @@ This application was deployed to AWS and Heroku services. Here are the links:
 
 ## Description
 
-This is a Full Stack MERN application designed to create tickets or work orders. It was created to maximaize comunication within employees in an organizaion and also between users and administration in a larger scale enviroments. Think of an apartment complex where tenants submit tickets to report issues or complaints. With this app, they will get updates from the administrator as the tickets move through the process until it gets resolved.
+This is a Full Stack MERN application designed to create tickets or work orders. It was created to maximize communication within employees in an organization and also between users and administration in a larger scale environments. Think of an apartment complex where tenants submit tickets to report issues or complaints. With this app, they will get updates from the administrator as the tickets move through the process until it gets resolved.
 
 For a test drive, login as a Resident or Administrator using these credentials:
 -   Resident - email: james@gmail.com / password: 123456
