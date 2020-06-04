@@ -64,7 +64,9 @@ If you have any questions about the repo, open an issue or contact [jaab30](http
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jaab30/passport-auth-with-mysql-and-sequelize-boiler-plate)
 
+![tixGen](https://user-images.githubusercontent.com/40499942/83710819-a0194980-a5ef-11ea-8de3-94fe98324ea9.jpg)
 
+[![Tickect Generator Video](https://user-images.githubusercontent.com/40499942/83710819-a0194980-a5ef-11ea-8de3-94fe98324ea9.jpg)](https://www.youtube.com/watch?v=d1MO_N9UWzM&feature=youtu.be)
 ## images
 
 <img src="https://user-images.githubusercontent.com/40499942/82206497-57b31980-98d6-11ea-8b4c-1119a6237f10.png" alt="app example" width="600px"/>
