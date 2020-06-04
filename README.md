@@ -66,7 +66,7 @@ If you have any questions about the repo, open an issue or contact [jaab30](http
 
 ## Video Preview
 
-[![Tickect Generator Video](https://user-images.githubusercontent.com/40499942/83711110-511fe400-a5f0-11ea-9fc9-e3397e3b0cb9.jpg)](https://www.youtube.com/watch?v=d1MO_N9UWzM&feature=youtu.be)
+[![Ticket Generator Video](https://user-images.githubusercontent.com/40499942/83711110-511fe400-a5f0-11ea-9fc9-e3397e3b0cb9.jpg)](https://www.youtube.com/watch?v=d1MO_N9UWzM&feature=youtu.be)
 
 ## images
 
