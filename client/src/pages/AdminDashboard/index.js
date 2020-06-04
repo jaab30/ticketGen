@@ -74,8 +74,11 @@ function AdminDashboard() {
 
                 <Row className="mt-4 mb-4 pb-4">
                     <Col lg={3} md={6} className="mt-4"><Link className="dash-link" to="/admin/ticketrequest"><Button outline color="secondary" size="lg" block> <Icon className="far fa-clipboard fa-1x mr-3 dash-icon" />Submit a Ticket</Button></Link></Col>
+
                     <Col lg={3} md={6} className="mt-4"><Link className="dash-link" to="/admin/ticketlist"><Button outline color="secondary" size="lg" block><Icon className="far fa-hourglass fa-1x mr-3 dash-icon" />Ticket Status</Button></Link></Col>
+
                     <Col lg={3} md={6} className="mt-4"><Button onClick={showUpdateForm} outline color="secondary" size="lg" block><Icon className="far fa-edit fa-1x mr-3 dash-icon" />Update Profile</Button></Col>
+
                     <Col lg={3} md={6} className="mt-4"><Link className="dash-link" to="/admin/messages"><Button outline color="secondary" size="lg" block><Icon className="far fa-question-circle fa-1x mr-3 dash-icon" />Messages</Button></Link></Col>
                 </Row>
             </Container>
