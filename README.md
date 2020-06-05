@@ -62,7 +62,7 @@ npm install
 
 If you have any questions about the repo, open an issue or contact [jaab30](https://github.com/jaab30) directly at jaab30@yahoo.com.
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jaab30/passport-auth-with-mysql-and-sequelize-boiler-plate)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jaab30/ticketGen)
 
 ## Video Preview
 
