@@ -38,7 +38,7 @@ function AdminTicketDetail() {
             <Container>
                 <Row className="global justify-content-center listRow">
                     <Col md={12}>
-                        <H1 className="display-4 text-center mt-4 mb-1">Ticket Details</H1>
+                        <H1 className="display-4 text-center mt-4 mb-1">Contact Messages</H1>
                     </Col>
                     <Col className="p-4" md={12}>
                         <Row form className="detail-container">
