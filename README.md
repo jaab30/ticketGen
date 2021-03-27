@@ -3,8 +3,8 @@
 
 ## Online Example & Deployment:
 
-This application was deployed to AWS and Heroku services. Here are the links:
--   AWS: http://ec2-18-220-148-152.us-east-2.compute.amazonaws.com
+This application was deployed to AWS (using Docker and CI/CD Integration with Travis) and Heroku services. Here are the links:
+-   AWS: http://ticketgen-env.eba-2spzqmxc.us-east-2.elasticbeanstalk.com/
 -   Heroku: http://tix-generator.herokuapp.com/
 
 ## Description
