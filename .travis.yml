@@ -1,0 +1,28 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+script:
+  - docker build -t jaab30/ticket-gen .
+  - docker build -t jaab30/ticket-gen-nginx ./nginx
+
+after_success:
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push jaab30/ticket-gen
+  - docker push jaab30/ticket-gen-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-2'
+  app: 'ticket-gen'
+  env: 'Ticketgen-env'
+  bucket_name: 'elasticbeanstalk-us-east-2-902288401987'
+  bucket_path: 'ticket-gen'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

@@ -11,14 +11,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 /* Serve up static assets (usually on heroku) */
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, './client/build')));
-};
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.join(__dirname, './client/build')));
+// };
+app.use(express.static(path.join(__dirname, './client/build')));
 
 //mongo database
 const db = config.MONGO_URI;
 // connet to mongo
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
+mongoose.connect(db)
     .then(() => console.log(`MongoDB Connected`))
     .catch(err => console.log(err));
 
